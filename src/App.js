@@ -1,24 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+// Package import
+import {Routes, Route} from 'react-router-dom'
+
+// Page import 
+import Landing from './pages/landing/Landing';
+import SignIn from './pages/signin/SignIn';
+import SingUp from './pages/signup/SignUp';
+import Movie from './pages/movie/Movie';
+import Drama from './pages/drama/Drama';
+import Entertain from './pages/entertain/Entertain';
+import Detail from './pages/detail/Detail';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route path='/'  exact='true' element={<Landing />} />
+      <Route path='/signin' element={<SignIn />} />
+      <Route path='/signup' element={<SingUp />} />
+      <Route path='/movie' element={<Movie />} />
+      <Route path='/drama' element={<Drama />} />
+      <Route path='/entertain' element={<Entertain />} />
+      <Route path='/detail' element={<Detail />} />
+      <Route path='*' element={<Landing />} />
+    </Routes>
   );
 }
 
