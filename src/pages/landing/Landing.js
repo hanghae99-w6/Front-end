@@ -20,8 +20,9 @@ export default Entertain;
 export const LandingBox = styled.div`
   position: absolute;
   top: 30%;
-  left : 50%;
-  width: 100px;
+  left: 50%;
+  transform: translateX(-200px);
+  width: 400px;
   height: 100px;
   background-color: red;
 `;
