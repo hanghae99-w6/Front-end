@@ -1,9 +1,9 @@
 // Component import
-import Header from '../../components/header/Header';
-import Footer from '../../components/footer/Footer';
+import Header from "../../components/header/Header";
+import Footer from "../../components/footer/Footer";
 
 // Package import
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const Entertain = () => {
   return (
@@ -20,6 +20,7 @@ export default Entertain;
 export const LandingBox = styled.div`
   position: absolute;
   top: 30%;
+  left : 50%;
   width: 100px;
   height: 100px;
   background-color: red;
