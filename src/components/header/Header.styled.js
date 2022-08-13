@@ -20,6 +20,7 @@ export const HeaderBoxContents = styled.div`
 `;
 export const HeaderBoxLogo = styled.div`
   position: absolute;
+  left: 0;
   background-image: url(${logo});
   background-size: contain;
   background-repeat: no-repeat;
@@ -59,7 +60,7 @@ export const HeaderBoxSign = styled.div`
   box-sizing: border-box;
   position: absolute;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   gap: 30px;
   width: 250px;
