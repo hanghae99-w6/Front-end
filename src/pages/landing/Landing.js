@@ -1,9 +1,10 @@
 // Component import
-import Header from '../../components/header/Header';
-import Footer from '../../components/footer/Footer';
+import Header from "../../components/header/Header";
+import Footer from "../../components/footer/Footer";
 
 // Package import
-import styled from 'styled-components';
+import styled from "styled-components";
+import { ImageLanding } from "../../static/image/image";
 
 const Entertain = () => {
   return (
@@ -19,10 +20,15 @@ export default Entertain;
 
 export const LandingBox = styled.div`
   position: absolute;
-  top: 30%;
+  background-image: url(${ImageLanding});
+  background-repeat: no-repeat;
+  background-position : center;
+  background-size: 70%;
+  top: 20%;
   left: 50%;
-  transform: translateX(-200px);
-  width: 400px;
-  height: 100px;
-  background-color: red;
+  transform: translateX(-600px);
+  width: 1200px;
+  height: 600px;
+  /* background-color: #cecece; */
+  border: 1px solid red;
 `;
