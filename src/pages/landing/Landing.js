@@ -1,34 +1,24 @@
+// Package import
+import React from 'react';
+import 'swiper/css/bundle';
+
 // Component import
 import Header from '../../components/header/Header';
 import Footer from '../../components/footer/Footer';
+import { LandingBox } from './Landing.styled';
+import ImageSlider from './ImageSlider.js';
+import './ImageSlider';
 
-// Package import
-import styled from 'styled-components';
-import { ImageLanding } from '../../static/image/image';
-
-const Entertain = () => {
+const Landing = () => {
   return (
     <>
       <Header />
-      <LandingBox />
+      <LandingBox>
+        <ImageSlider />
+      </LandingBox>
       <Footer />
     </>
   );
 };
 
-export default Entertain;
-
-export const LandingBox = styled.div`
-  position: absolute;
-  background-image: url(${ImageLanding});
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 70%;
-  top: 20%;
-  left: 50%;
-  transform: translateX(-600px);
-  width: 1200px;
-  height: 600px;
-  /* background-color: #cecece; */
-  border: 1px solid red;
-`;
+export default Landing;

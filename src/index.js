@@ -1,21 +1,24 @@
 // React import
-import React from 'react';
-import ReactDOM from 'react-dom/client';
+import React from "react";
+import ReactDOM from "react-dom/client";
 
 // Redux import
-import { Provider } from 'react-redux';
-import store from './redux/configStore';
+import { Provider } from "react-redux";
+import store from "./redux/configStore";
 
 // Style import
 import './index.css';
 
 // Component import
-import App from './App';
+import App from "./App";
+
+// Style import
+import "./index.css";
 
 // Package import
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter } from "react-router-dom";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <Provider store={store}>

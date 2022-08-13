@@ -12,6 +12,7 @@
     "json-server": "^0.17.0",
     "lodash": "^4.17.21",
     "react": "^18.2.0",
+    "react-coverflow": "^0.2.20",
     "react-dom": "^18.2.0",
     "react-icons": "^4.4.0",
     "react-password-strength-bar": "^0.4.1",
@@ -20,6 +21,8 @@
     "react-scripts": "5.0.1",
     "redux": "^4.2.0",
     "styled-components": "^5.3.5",
+    "swiper": "^8.3.2",
+    "vue-coverflow": "^2.2.0",
     "web-vitals": "^2.1.0"
   },
   "scripts": {

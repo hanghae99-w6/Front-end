@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { logoFooter } from '../../static/image/image.js';
 import { AiFillGithub, AiFillYoutube } from 'react-icons/ai';
 import { SiNotion } from 'react-icons/si';
-
 const Footer = () => {
   return (
     <FooterBox>
