@@ -1,3 +1,16 @@
 {
-  "user": [{ "id": "pillsang" }]
+  "member": [
+    {
+      "id": 1,
+      "loginId": "cosmos195@naver.com",
+      "password": "Zerobeauty159!",
+      "nickname": "lucy"
+    },
+    {
+      "loginId": "tjdvlftkd@naver.com",
+      "password": "Zerobeauty159!",
+      "nickname": "suzy",
+      "id": 2
+    }
+  ]
 }

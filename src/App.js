@@ -4,7 +4,7 @@ import {Routes, Route} from 'react-router-dom'
 // Page import 
 import Landing from './pages/landing/Landing';
 import SignIn from './pages/signin/SignIn';
-import SingUp from './pages/signup/SignUp';
+import SignUp from './pages/signup/SignUp';
 import Movie from './pages/movie/Movie';
 import Drama from './pages/drama/Drama';
 import Entertain from './pages/entertain/Entertain';
@@ -15,7 +15,7 @@ function App() {
     <Routes>
       <Route path='/'  exact='true' element={<Landing />} />
       <Route path='/signin' element={<SignIn />} />
-      <Route path='/signup' element={<SingUp />} />
+      <Route path='/signup' element={<SignUp />} />
       <Route path='/movie' element={<Movie />} />
       <Route path='/drama' element={<Drama />} />
       <Route path='/entertain' element={<Entertain />} />
@@ -26,3 +26,4 @@ function App() {
 }
 
 export default App;
+ 
