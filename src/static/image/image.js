@@ -1,6 +1,5 @@
-import logo from './logo.png';
+import logoHeader from "./logoHeader.png";
+import logoFooter from "./logoFooter.png";
+import ImageLanding from "./ImageLanding.png"
 
-
-export {
-  logo
-} 
+export { logoHeader, logoFooter, ImageLanding };
