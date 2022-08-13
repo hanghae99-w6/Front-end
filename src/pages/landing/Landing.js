@@ -1,10 +1,10 @@
 // Component import
-import Header from "../../components/header/Header";
-import Footer from "../../components/footer/Footer";
+import Header from '../../components/header/Header';
+import Footer from '../../components/footer/Footer';
 
 // Package import
-import styled from "styled-components";
-import { ImageLanding } from "../../static/image/image";
+import styled from 'styled-components';
+import { ImageLanding } from '../../static/image/image';
 
 const Entertain = () => {
   return (
@@ -22,7 +22,7 @@ export const LandingBox = styled.div`
   position: absolute;
   background-image: url(${ImageLanding});
   background-repeat: no-repeat;
-  background-position : center;
+  background-position: center;
   background-size: 70%;
   top: 20%;
   left: 50%;

@@ -1,29 +1,43 @@
-// Package import
-import styled from 'styled-components';
-import { logoHeader } from '../../static/image/image.js';
-import '../../static/font/font.css';
 import Button from '../../elements/button/Button';
+import { useNavigate } from 'react-router-dom';
+import {
+  HeaderBox,
+  HeaderBoxContents,
+  HeaderBoxLogo,
+  HeaderBoxCategory,
+  HeaderBoxCategoryText,
+  HeaderBoxSign,
+  HeaderBoxSignUser,
+} from './Header.styled';
 
 const Header = () => {
+  const navigate = useNavigate();
+  const username = 'Username';
   const status = false;
 
   return (
     <HeaderBox>
       <HeaderBoxContents>
-        <HeaderBoxLogo />
+        <HeaderBoxLogo onClick={() => navigate('/')} />
         <HeaderBoxCategory>
-          <HeaderBoxCategoryText>영화</HeaderBoxCategoryText>
-          <HeaderBoxCategoryText>드라마</HeaderBoxCategoryText>
-          <HeaderBoxCategoryText>예능</HeaderBoxCategoryText>
+          <HeaderBoxCategoryText onClick={() => navigate('/movie')}>
+            영화
+          </HeaderBoxCategoryText>
+          <HeaderBoxCategoryText onClick={() => navigate('/drama')}>
+            드라마
+          </HeaderBoxCategoryText>
+          <HeaderBoxCategoryText onClick={() => navigate('/entertain')}>
+            예능
+          </HeaderBoxCategoryText>
         </HeaderBoxCategory>
         <HeaderBoxSign>
           {status ? (
             <>
-              <HeaderBoxSignUser>Username</HeaderBoxSignUser>
-              <Button text={"로그아웃"}></Button>
+              <HeaderBoxSignUser>{username}</HeaderBoxSignUser>
+              <Button text={'로그아웃'}></Button>
             </>
           ) : (
-            <Button text={"로그인"}></Button>
+            <Button _onClick={() => navigate('/signin')} text={'로그인'}></Button>
           )}
         </HeaderBoxSign>
       </HeaderBoxContents>
@@ -32,6 +46,8 @@ const Header = () => {
 };
 
 export default Header;
+<<<<<<< HEAD
+=======
 
 export const HeaderBox = styled.div`
   position: absolute;
@@ -99,3 +115,4 @@ export const HeaderBoxSignUser = styled.span`
   font-size: 20px;
   color: white;
 `;
+>>>>>>> ed9f2a240d43bacff8d7f0c1b42db49771d12273
