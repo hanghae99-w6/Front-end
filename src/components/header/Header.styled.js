@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { logo } from '../../static/image/image.js';
+import { logoHeader } from '../../static/image/image.js';
 import '../../static/font/font.css';
 
 export const HeaderBox = styled.div`
@@ -21,7 +21,7 @@ export const HeaderBoxContents = styled.div`
 export const HeaderBoxLogo = styled.div`
   position: absolute;
   left: 0;
-  background-image: url(${logo});
+  background-image: url(${logoHeader});
   background-size: contain;
   background-repeat: no-repeat;
   width: 250px;
