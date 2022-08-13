@@ -1,12 +1,17 @@
 import axios from "axios";
 
 const accessToken = document.cookie.split("=")[1];
+const refreshToken = document.cookie.split("=")[2];
 
-export const api = axios.create({
+export const api_toke = axios.create({
   baseURL: "http://localhost:5001",
   headers: {
     "content-type": "application/json;charset=UTF-8",
     accept: "application/json,",
-    authorization: `${accessToken}`,
+    "Refresh-Token": `${refreshToken}`,
+    Authorization: `bearer ${accessToken}`,
   },
 });
+
+// hearder - multipart/form-data 
+// Body key - multipartFile 
