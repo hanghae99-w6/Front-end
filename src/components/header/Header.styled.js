@@ -74,3 +74,4 @@ export const HeaderBoxSignUser = styled.span`
   font-size: 20px;
   color: white;
 `;
+

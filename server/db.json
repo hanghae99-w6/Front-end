@@ -137,5 +137,219 @@
       "createdAt": "2022-08-15",
       "modifiedAt": "2022-08-15"
     }
+  ],
+  "post": [
+    {
+      "id": 1,
+      "title": "우리들의 블루스",
+      "imgUrl": "https://bucket-owner-full-control.s3.ap-northeast-2.amazonaws.com/20210531_003708.png",
+      "likes": 5,
+      "content": "2022 최고의 드라마입니다!",
+      "createdAt": "2022-08-15",
+      "modifiedAt": "2022-08-15"
+    },
+    {
+      "id": 2,
+      "title": "우리들의 블루스",
+      "imgUrl": "",
+      "likes": 5,
+      "content": "2022 최고의 드라마입니다!",
+      "createdAt": "2022-08-15",
+      "modifiedAt": "2022-08-15"
+    },
+    {
+      "id": 3,
+      "title": "우리들의 블루스",
+      "imgUrl": "",
+      "likes": 5,
+      "content": "2022 최고의 드라마입니다!",
+      "createdAt": "2022-08-15",
+      "modifiedAt": "2022-08-15"
+    },
+    {
+      "id": 4,
+      "title": "우리들의 블루스",
+      "imgUrl": "https://bucket-owner-full-control.s3.ap-northeast-2.amazonaws.com/20210531_003708.png",
+      "likes": 5,
+      "content": "2022 최고의 드라마입니다!",
+      "createdAt": "2022-08-15",
+      "modifiedAt": "2022-08-15"
+    },
+    {
+      "id": 5,
+      "title": "우리들의 블루스",
+      "imgUrl": "",
+      "likes": 5,
+      "content": "2022 최고의 드라마입니다!",
+      "createdAt": "2022-08-15",
+      "modifiedAt": "2022-08-15"
+    },
+    {
+      "id": 6,
+      "title": "우리들의 블루스",
+      "imgUrl": "https://bucket-owner-full-control.s3.ap-northeast-2.amazonaws.com/20210531_003708.png",
+      "likes": 5,
+      "content": "2022 최고의 드라마입니다!",
+      "createdAt": "2022-08-15",
+      "modifiedAt": "2022-08-15"
+    },
+    {
+      "id": 7,
+      "title": "우리들의 블루스",
+      "imgUrl": "https://bucket-owner-full-control.s3.ap-northeast-2.amazonaws.com/20210531_003708.png",
+      "likes": 5,
+      "content": "2022 최고의 드라마입니다!",
+      "createdAt": "2022-08-15",
+      "modifiedAt": "2022-08-15"
+    },
+    {
+      "id": 8,
+      "title": "우리들의 블루스",
+      "imgUrl": "https://bucket-owner-full-control.s3.ap-northeast-2.amazonaws.com/20210531_003708.png",
+      "likes": 5,
+      "content": "2022 최고의 드라마입니다!",
+      "createdAt": "2022-08-15",
+      "modifiedAt": "2022-08-15"
+    },
+    {
+      "id": 9,
+      "title": "우리들의 블루스",
+      "imgUrl": "https://bucket-owner-full-control.s3.ap-northeast-2.amazonaws.com/20210531_003708.png",
+      "likes": 5,
+      "content": "2022 최고의 드라마입니다!",
+      "createdAt": "2022-08-15",
+      "modifiedAt": "2022-08-15"
+    },
+    {
+      "id": 10,
+      "title": "우리들의 블루스",
+      "imgUrl": "",
+      "likes": 5,
+      "content": "2022 최고의 드라마입니다!",
+      "createdAt": "2022-08-15",
+      "modifiedAt": "2022-08-15"
+    }
+  ],
+  "code": [
+    {
+      "code": "YgucWirXp6BPluE-X5gZn2Iq_fmC8cAv3mlLH52e0uMkTgFdq3xHi2nQRtlIU6P5PVwL1Aopb7kAAAGCoBT_mA",
+      "id": 1
+    },
+    {
+      "code": "YgucWirXp6BPluE-X5gZn2Iq_fmC8cAv3mlLH52e0uMkTgFdq3xHi2nQRtlIU6P5PVwL1Aopb7kAAAGCoBT_mA",
+      "id": 2
+    },
+    {
+      "code": "YgucWirXp6BPluE-X5gZn2Iq_fmC8cAv3mlLH52e0uMkTgFdq3xHi2nQRtlIU6P5PVwL1Aopb7kAAAGCoBT_mA",
+      "id": 3
+    },
+    {
+      "code": "YgucWirXp6BPluE-X5gZn2Iq_fmC8cAv3mlLH52e0uMkTgFdq3xHi2nQRtlIU6P5PVwL1Aopb7kAAAGCoBT_mA",
+      "id": 4
+    },
+    {
+      "code": "YgucWirXp6BPluE-X5gZn2Iq_fmC8cAv3mlLH52e0uMkTgFdq3xHi2nQRtlIU6P5PVwL1Aopb7kAAAGCoBT_mA",
+      "id": 5
+    },
+    {
+      "code": "YgucWirXp6BPluE-X5gZn2Iq_fmC8cAv3mlLH52e0uMkTgFdq3xHi2nQRtlIU6P5PVwL1Aopb7kAAAGCoBT_mA",
+      "id": 6
+    },
+    {
+      "code": "YgucWirXp6BPluE-X5gZn2Iq_fmC8cAv3mlLH52e0uMkTgFdq3xHi2nQRtlIU6P5PVwL1Aopb7kAAAGCoBT_mA",
+      "id": 7
+    },
+    {
+      "code": "YgucWirXp6BPluE-X5gZn2Iq_fmC8cAv3mlLH52e0uMkTgFdq3xHi2nQRtlIU6P5PVwL1Aopb7kAAAGCoBT_mA",
+      "id": 8
+    },
+    {
+      "code": "g2AZqUsWpHjU2kS-AJvkmP1fOBfviDTfCjdkRiowi9gPn7ynSbGviIssu7POcL42ekmYWQopdSkAAAGCoCfPcw",
+      "id": 9
+    },
+    {
+      "code": "g2AZqUsWpHjU2kS-AJvkmP1fOBfviDTfCjdkRiowi9gPn7ynSbGviIssu7POcL42ekmYWQopdSkAAAGCoCfPcw",
+      "id": 10
+    },
+    {
+      "code": "g2AZqUsWpHjU2kS-AJvkmP1fOBfviDTfCjdkRiowi9gPn7ynSbGviIssu7POcL42ekmYWQopdSkAAAGCoCfPcw",
+      "id": 11
+    },
+    {
+      "code": "g2AZqUsWpHjU2kS-AJvkmP1fOBfviDTfCjdkRiowi9gPn7ynSbGviIssu7POcL42ekmYWQopdSkAAAGCoCfPcw",
+      "id": 12
+    },
+    {
+      "code": "g2AZqUsWpHjU2kS-AJvkmP1fOBfviDTfCjdkRiowi9gPn7ynSbGviIssu7POcL42ekmYWQopdSkAAAGCoCfPcw",
+      "id": 13
+    },
+    {
+      "code": "g2AZqUsWpHjU2kS-AJvkmP1fOBfviDTfCjdkRiowi9gPn7ynSbGviIssu7POcL42ekmYWQopdSkAAAGCoCfPcw",
+      "id": 14
+    },
+    {
+      "code": "g2AZqUsWpHjU2kS-AJvkmP1fOBfviDTfCjdkRiowi9gPn7ynSbGviIssu7POcL42ekmYWQopdSkAAAGCoCfPcw",
+      "id": 15
+    },
+    {
+      "code": "g2AZqUsWpHjU2kS-AJvkmP1fOBfviDTfCjdkRiowi9gPn7ynSbGviIssu7POcL42ekmYWQopdSkAAAGCoCfPcw",
+      "id": 16
+    },
+    {
+      "code": "g2AZqUsWpHjU2kS-AJvkmP1fOBfviDTfCjdkRiowi9gPn7ynSbGviIssu7POcL42ekmYWQopdSkAAAGCoCfPcw",
+      "id": 17
+    },
+    {
+      "code": "g2AZqUsWpHjU2kS-AJvkmP1fOBfviDTfCjdkRiowi9gPn7ynSbGviIssu7POcL42ekmYWQopdSkAAAGCoCfPcw",
+      "id": 18
+    },
+    {
+      "code": "g2AZqUsWpHjU2kS-AJvkmP1fOBfviDTfCjdkRiowi9gPn7ynSbGviIssu7POcL42ekmYWQopdSkAAAGCoCfPcw",
+      "id": 19
+    },
+    {
+      "code": "g2AZqUsWpHjU2kS-AJvkmP1fOBfviDTfCjdkRiowi9gPn7ynSbGviIssu7POcL42ekmYWQopdSkAAAGCoCfPcw",
+      "id": 20
+    },
+    {
+      "code": "g2AZqUsWpHjU2kS-AJvkmP1fOBfviDTfCjdkRiowi9gPn7ynSbGviIssu7POcL42ekmYWQopdSkAAAGCoCfPcw",
+      "id": 21
+    },
+    {
+      "code": "g2AZqUsWpHjU2kS-AJvkmP1fOBfviDTfCjdkRiowi9gPn7ynSbGviIssu7POcL42ekmYWQopdSkAAAGCoCfPcw",
+      "id": 22
+    },
+    {
+      "code": "mSwh0Hd9h6wOxY49PLTul5BR9sgIWHPHhDEF4tVoKzQSp3O6oML0FpPHp0KMJXkL7d67uQorDR4AAAGCoD1tfg",
+      "id": 23
+    },
+    {
+      "code": "mSwh0Hd9h6wOxY49PLTul5BR9sgIWHPHhDEF4tVoKzQSp3O6oML0FpPHp0KMJXkL7d67uQorDR4AAAGCoD1tfg",
+      "id": 24
+    },
+    {
+      "code": "mwe8-4Kq5C27bXW47w4dOeqsxEZEsC0ecR9cP40xDYNXGuI1u5AK7LgB7ZWAsEz3iS8BegorDR4AAAGCoD4fHg",
+      "id": 25
+    },
+    {
+      "code": "mwe8-4Kq5C27bXW47w4dOeqsxEZEsC0ecR9cP40xDYNXGuI1u5AK7LgB7ZWAsEz3iS8BegorDR4AAAGCoD4fHg",
+      "id": 26
+    },
+    {
+      "code": "lPrxTpZokt4v-Urpj1AwWSNStSpjjLJ6FJl7iXRq3cIgHjliUr3Tcs4LC0-7D0G_dMl9YAopcSEAAAGCobjaPg",
+      "id": 27
+    },
+    {
+      "code": "lPrxTpZokt4v-Urpj1AwWSNStSpjjLJ6FJl7iXRq3cIgHjliUr3Tcs4LC0-7D0G_dMl9YAopcSEAAAGCobjaPg",
+      "id": 28
+    },
+    {
+      "code": "FGYdYX24-tUFNGpkTNz2_p6kLbuDaVLcVTVKKEsUdq48iWZHhoxW8q53Qu4BYi7WAt0CVAo9dJgAAAGCoeoEOQ",
+      "id": 29
+    },
+    {
+      "code": "FGYdYX24-tUFNGpkTNz2_p6kLbuDaVLcVTVKKEsUdq48iWZHhoxW8q53Qu4BYi7WAt0CVAo9dJgAAAGCoeoEOQ",
+      "id": 30
+    }
   ]
 }
