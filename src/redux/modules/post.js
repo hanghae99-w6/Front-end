@@ -11,8 +11,9 @@ const addPost = createAsyncThunk('post/addPost', async (payload, thunkAPI) => {
 
 // Post 초기 상태 값
 const initialState = {
-  is_Loaded: true,
-  post: []
+  detail_is_loaded: false,
+  is_loaded: false,
+  post: [],
 };
 
 // reducers 또는 extraReducers 구현
@@ -23,7 +24,7 @@ export const postSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(addPost.fulfilled, (state, action) => {
       // 상태 변화 코드 작성
-    })
+    });
   },
 });
 

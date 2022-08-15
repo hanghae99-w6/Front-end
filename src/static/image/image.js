@@ -1,5 +1,5 @@
 import logoHeader from "./logoHeader.png";
 import logoFooter from "./logoFooter.png";
-import ImageLanding from "./ImageLanding.png"
+import DetailImage1 from "./DetailImage1.png";
 
-export { logoHeader, logoFooter, ImageLanding };
+export { logoHeader, logoFooter, DetailImage1};

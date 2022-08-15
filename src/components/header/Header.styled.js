@@ -12,12 +12,14 @@ export const HeaderBox = styled.div`
   display: flex;
   justify-content: center;
 `;
+
 export const HeaderBoxContents = styled.div`
   position: relative;
   width: 1200px;
   height: 100%;
   box-sizing: border-box;
 `;
+
 export const HeaderBoxLogo = styled.div`
   position: absolute;
   left: 0;

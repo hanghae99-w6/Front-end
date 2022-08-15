@@ -14,15 +14,15 @@ export const LandingBox = styled.div`
 
 export const LandingText = styled.div`
   font-family: NotoSansKR-Regular;
-  font-size: 20px;
-  line-height: 30px;
+  font-size: 27px;
+  line-height: 45px;
   text-align: center;
   position: absolute;
   background-position: center;
   width: 500px;
   height: 30px;
   left: 50%;
-  top: 101%;
+  top: 106%;
   transform: translateX(-50%);
   color: white;
 `;
