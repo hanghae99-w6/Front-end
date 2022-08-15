@@ -33,7 +33,7 @@ export const SignInBoxTitleSpan = styled.span`
   color: #cecece;
   font-size: 40px;
 `;
-export const SignInBoxForm = styled.div`
+export const SignInBoxForm = styled.form`
   box-sizing: border-box;
   width: 100%;
   height: 40%;

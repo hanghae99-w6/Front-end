@@ -9,7 +9,7 @@ import 'swiper/css/navigation';
 import './ImageSlider.css';
 
 // import required modules
-import { EffectCoverflow, Pagination, Navigation } from 'swiper';
+import { EffectCoverflow, Pagination, Navigation, Autoplay } from 'swiper';
 
 export default function ImageSlider() {
   return (
@@ -26,13 +26,16 @@ export default function ImageSlider() {
           depth: 150,
           modifier: 1.5,
           slideShadows: false,
-          autoplay: 3000,
           speed: 1000,
         }}
         pagination={{
           clickable: true,
         }}
-        modules={[EffectCoverflow, Pagination, Navigation]}
+        autoplay={{
+          delay: 2000,
+          disableOnInteraction: false,
+        }}
+        modules={[Autoplay, EffectCoverflow, Pagination]}
         className="mySwiper"
       >
         <SwiperSlide>
