@@ -1,13 +1,11 @@
 // Package import
 import React from 'react';
-import 'swiper/css/bundle';
 
 // Component import
 import Header from '../../components/header/Header';
 import Footer from '../../components/footer/Footer';
 import { LandingBox, LandingText } from './Landing.styled';
 import ImageSlider from './ImageSlider.js';
-import './ImageSlider';
 import '../../static/font/font.css';
 
 const Landing = () => {

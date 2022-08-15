@@ -22,7 +22,7 @@ export default Footer;
 
 export const FooterBox = styled.div`
   background-color: black;
-  position: absolute;
+  position: fixed;
   width: 100%;
   height: 60px;
   bottom: 0;

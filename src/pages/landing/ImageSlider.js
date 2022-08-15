@@ -10,14 +10,12 @@ import 'swiper/css/autoplay';
 import './ImageSlider.css';
 
 // import required modules
-import { EffectCoverflow, Pagination, Navigation, Autoplay } from 'swiper';
-
+import { EffectCoverflow, Pagination, Autoplay } from 'swiper';
 export default function ImageSlider() {
   return (
     <>
       <Swiper
         effect={'coverflow'}
-        autoplay={{ delay: 1000, disableOnInteraction: false }}
         loop={true}
         grabCursor={true}
         centeredSlides={true}
@@ -29,11 +27,16 @@ export default function ImageSlider() {
           depth: 150,
           modifier: 1.5,
           slideShadows: false,
+          speed: 1000,
         }}
         pagination={{
           clickable: true,
         }}
-        modules={[EffectCoverflow, Pagination, Navigation, Autoplay]}
+        autoplay={{
+          delay: 2000,
+          disableOnInteraction: false,
+        }}
+        modules={[Autoplay, EffectCoverflow, Pagination]}
         className="mySwiper"
       >
         <SwiperSlide>
