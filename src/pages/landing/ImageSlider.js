@@ -6,11 +6,11 @@ import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
+import 'swiper/css/autoplay';
 import './ImageSlider.css';
 
 // import required modules
-import { EffectCoverflow, Pagination, Navigation, Autoplay } from 'swiper';
-
+import { EffectCoverflow, Pagination, Autoplay } from 'swiper';
 export default function ImageSlider() {
   return (
     <>
@@ -20,6 +20,7 @@ export default function ImageSlider() {
         grabCursor={true}
         centeredSlides={true}
         slidesPerView={'auto'}
+        slideToClickedSlide= {true}
         coverflowEffect={{
           rotate: 0,
           stretch: 100,

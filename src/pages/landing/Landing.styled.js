@@ -11,3 +11,18 @@ export const LandingBox = styled.div`
   width: 1200px;
   height: 600px;
 `;
+
+export const LandingText = styled.div`
+  font-family: NotoSansKR-Regular;
+  font-size: 20px;
+  line-height: 30px;
+  text-align: center;
+  position: absolute;
+  background-position: center;
+  width: 500px;
+  height: 30px;
+  left: 50%;
+  top: 101%;
+  transform: translateX(-50%);
+  color: white;
+`;
