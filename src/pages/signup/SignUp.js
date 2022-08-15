@@ -9,17 +9,17 @@ import {
   addMemberThunk,
 } from '../../redux/modules/member';
 
-// Component import
-import Header from '../../components/header/Header';
-import Footer from '../../components/footer/Footer';
-import Button from '../../elements/button/Button';
-
 // Package import
 import { useNavigate } from 'react-router-dom';
 import { GrFormView } from 'react-icons/gr';
 import { MdCancel } from 'react-icons/md';
 import { debounce } from 'lodash';
 import PasswordStrengthBar from 'react-password-strength-bar';
+
+// Component & Element import
+import Header from '../../components/header/Header';
+import Footer from '../../components/footer/Footer';
+import Button from '../../elements/button/Button';
 
 //Style import
 import {
@@ -159,57 +159,63 @@ const SignUp = () => {
     [nickname]
   );
 
-  const deleteText = (state) => {
-    switch (state) {
-      case 'email': {
-        setEmail('');
-        break;
-      }
-      case 'nickname': {
-        setNickName('');
-        break;
-      }
-      case 'password': {
-        setPassword('');
-        break;
-      }
-      case 'repassword': {
-        setRePassword('');
-        break;
-      }
-      default:
-        break;
-    }
-  };
-
-  const viewPassword = (state) => {
-    switch (state) {
-      case 'password': {
-        if (password === '') {
-          break;
-        } else {
-          const type = passwordRef.current.type;
-          if (type === 'password') passwordRef.current.type = 'text';
-          else passwordRef.current.type = 'password';
+  const deleteText = useCallback(
+    (state) => {
+      switch (state) {
+        case 'email': {
+          setEmail('');
           break;
         }
-      }
-      case 'repassword': {
-        if (repassword === '') {
-          break;
-        } else {
-          const type = rePasswordRef.current.type;
-          if (type === 'password') rePasswordRef.current.type = 'text';
-          else rePasswordRef.current.type = 'password';
+        case 'nickname': {
+          setNickName('');
           break;
         }
+        case 'password': {
+          setPassword('');
+          break;
+        }
+        case 'repassword': {
+          setRePassword('');
+          break;
+        }
+        default:
+          break;
       }
-      default:
-        break;
-    }
-  };
+    },
+    [email, nickname, password, repassword]
+  );
 
-  const signUpAccount = (event) => {
+  const viewPassword = useCallback(
+    (state) => {
+      switch (state) {
+        case 'password': {
+          if (password === '') {
+            break;
+          } else {
+            const type = passwordRef.current.type;
+            if (type === 'password') passwordRef.current.type = 'text';
+            else passwordRef.current.type = 'password';
+            break;
+          }
+        }
+        case 'repassword': {
+          if (repassword === '') {
+            break;
+          } else {
+            const type = rePasswordRef.current.type;
+            if (type === 'password') rePasswordRef.current.type = 'text';
+            else rePasswordRef.current.type = 'password';
+            break;
+          }
+        }
+        default:
+          break;
+      }
+    },
+    [password, repassword]
+  );
+
+  const signUpAccount = useCallback((event) => {
     event.preventDefault();
     if (emailCheck === false) {
       emailRef.current.focus();
@@ -236,7 +242,7 @@ const SignUp = () => {
         navigate('/signin');
       }
     }
-  };
+  }, []);
 
   return (
     <Fragment>
@@ -272,7 +278,7 @@ const SignUp = () => {
                 type="text"
                 value={nickname}
                 onChange={(e) => setNickName(e.target.value)}
-                placeholder="닉네임을 입력하세요"
+                placeholder="닉네임을 입력하세요(4 ~ 6 글자)"
                 minLength="4"
                 maxLength="6"
                 required
@@ -363,6 +369,7 @@ const SignUp = () => {
                 height: '50px',
                 ft_size: '20px',
                 color: '#202020',
+                bg_color: '#727272',
               }}
             />
           </SignUpButtonGroup>

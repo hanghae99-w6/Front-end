@@ -1,20 +1,20 @@
 // React import
-import { useRef, useState, useEffect, Fragment } from 'react';
+import { useRef, useState, useCallback, useEffect, Fragment } from 'react';
 
 // Redux import
 import { useDispatch } from 'react-redux/es/exports';
 import { getMemberThunk, signInAction } from '../../redux/modules/member';
-
-// Component import
-import Header from '../../components/header/Header';
-import Footer from '../../components/footer/Footer';
-import Button from '../../elements/button/Button';
 
 // Package import
 import { useNavigate } from 'react-router-dom';
 import { RiKakaoTalkFill } from 'react-icons/ri';
 import { SiNaver } from 'react-icons/si';
 import { MdCancel } from 'react-icons/md';
+
+// Component & Element import
+import Header from '../../components/header/Header';
+import Footer from '../../components/footer/Footer';
+import Button from '../../elements/button/Button';
 
 //Style import
 import {
@@ -27,13 +27,16 @@ import {
   SignInBoxInput,
   SignInBoxInputIcon,
   SignInBoxSpan,
-  SignInBoxSocialGroup,
+  SignInBoxButtonGroup,
   SignInBoxSignUp,
   SignInBoxSignUpText,
   SignInBoxSignUpLink,
 } from './SignIn.styled';
 
 const SignIn = () => {
+  const REST_API_KEY = process.env.REACT_APP_KAKAO_REST_API_KEY;
+  const REDIRECT_URI = 'http://localhost:3000/kakao';
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -55,14 +58,14 @@ const SignIn = () => {
     else passwordIconRef.current.style.display = 'none';
   }, [email, password]);
 
-  const deleteEmailText = () => {
+  const deleteEmailText = useCallback(() => {
     setEmail('');
-  };
-  const deletePasswordText = () => {
+  }, [email]);
+  const deletePasswordText = useCallback(() => {
     setPassword('');
-  };
+  }, [password]);
 
-  const signInAccount = async (event) => {
+  const signInAccount = useCallback(async (event) => {
     event.preventDefault();
 
     dispatch(getMemberThunk(email)).then((res) => {
@@ -75,7 +78,7 @@ const SignIn = () => {
         emailRef.current.innerText = '이메일 형식에 맞지 않습니다';
         emailRef.current.style.color = '#f2153e';
         passwordRef.current.innerText = '';
-      }else {
+      } else {
         if (!res.payload) {
           emailRef.current.innerText = '없는 계정입니다';
           emailRef.current.style.color = '#f2153e';
@@ -97,7 +100,7 @@ const SignIn = () => {
         }
       }
     });
-  };
+  }, []);
 
   return (
     <Fragment>
@@ -140,21 +143,33 @@ const SignIn = () => {
               비밀번호를 확인해주세요
             </SignInBoxSpan>
           </SignInBoxInputGroup>
-          <Button
-            type={'submit'}
-            text={'SIGN IN'}
-            style={{
-              width: '200px',
-              height: '50px',
-              ft_size: '20px',
-              color: '#202020',
-            }}
-          />
+          <SignInBoxButtonGroup>
+            <Button
+              type={'submit'}
+              text={'SIGN IN'}
+              style={{
+                width: '170px',
+                height: '50px',
+                ft_size: '15px',
+                color: '#202020',
+              }}
+            />
+            <Button
+              type={'submit'}
+              text={'KAKAO SIGN IN'}
+              _onClick={() => {
+                window.location.href = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
+              }}
+              style={{
+                width: '170px',
+                height: '50px',
+                ft_size: '15px',
+                color: '#202020',
+                bg_color: '#F7E111',
+              }}
+            />
+          </SignInBoxButtonGroup>
         </SignInBoxForm>
-        <SignInBoxSocialGroup>
-          <RiKakaoTalkFill className="icon-kakao" />
-          <SiNaver className="icon-naver" />
-        </SignInBoxSocialGroup>
         <SignInBoxSignUp>
           <SignInBoxSignUpText>
             회원이 아니신가요?
