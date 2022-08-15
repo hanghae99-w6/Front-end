@@ -1,8 +1,10 @@
 // Redux import
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
+// Axios import
+import { api, api_auth } from '../../shared/api';
+
 // Package import
-import axios from 'axios';
 import { setCookie } from '../../shared/cookie';
 
 // Redux Thunk 구현 부분
@@ -10,7 +12,7 @@ export const emailDupCheckThunk = createAsyncThunk(
   'member/emailDupCheck',
   async (payload, thunkAPI) => {
     let check = false;
-    const resData = await axios
+    const resData = await api
       .get(`http://localhost:5001/member`)
       .then((res) => res.data)
       .catch((error) => console.err(error));
@@ -26,7 +28,7 @@ export const nickNameDupCheckThunk = createAsyncThunk(
   'member/nickNameDupCheckThunk',
   async (payload, thunkAPI) => {
     let check = false;
-    const resData = await axios
+    const resData = await api
       .get(`http://localhost:5001/member`)
       .then((res) => res.data)
       .catch((error) => console.err(error));
@@ -41,7 +43,7 @@ export const nickNameDupCheckThunk = createAsyncThunk(
 export const addMemberThunk = createAsyncThunk(
   'member/addMember',
   async (payload, thunkAPI) => {
-    const resData = await axios
+    const resData = await api
       .post(`http://localhost:5001/member`, payload)
       .then((res) => res.data);
     return thunkAPI.fulfillWithValue(resData);
@@ -51,11 +53,25 @@ export const addMemberThunk = createAsyncThunk(
 export const getMemberThunk = createAsyncThunk(
   'member/getMember',
   async (payload, thunkAPI) => {
-    const resData = await axios
+    const resData = await api
       .get(`http://localhost:5001/member`)
       .then((res) => res.data);
     const match = resData.find((user) => user.loginId === payload);
     return thunkAPI.fulfillWithValue(match);
+  }
+);
+
+export const kakaoAuthThunk = createAsyncThunk(
+  'member/kakaoLogin',
+  async (payload, thunkAPI) => {
+    console.log('test');
+    console.log(payload);
+    const resData = await api
+      .post(`http://localhost:5001/code`, payload)
+      .then((res) => res.data);
+    window.location.replace('/main');
+    setCookie('nickname', 'test');
+    return thunkAPI.fulfillWithValue(resData);
   }
 );
 

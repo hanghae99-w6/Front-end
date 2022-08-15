@@ -1,18 +1,26 @@
 // Redux import
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
-// Package import
-import axios from 'axios';
+// Axios import
+import { api, api_auth } from '../../shared/api';
 
 // Redux Thunk 구현 부분
-const addPost = createAsyncThunk('post/addPost', async (payload, thunkAPI) => {
-  // 비동기 통신 구현
-});
+export const getPostThunk = createAsyncThunk(
+  'post/getPost',
+  async (payload, thunkAPI) => {
+    const resData = await api
+      .get(`http://localhost:5001/post`)
+      .then((res) => res.data)
+      .catch((err) => console.err(err));
+
+    return thunkAPI.fulfillWithValue(resData);
+  }
+);
 
 // Post 초기 상태 값
 const initialState = {
-  is_Loaded: true,
-  post: []
+  is_loaded: false,
+  post: [],
 };
 
 // reducers 또는 extraReducers 구현
@@ -21,9 +29,10 @@ export const postSlice = createSlice({
   initialState: initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(addPost.fulfilled, (state, action) => {
-      // 상태 변화 코드 작성
-    })
+    builder.addCase(getPostThunk.fulfilled, (state, action) => {
+      state.is_loaded = true;
+      state.post = action.payload;
+    });
   },
 });
 

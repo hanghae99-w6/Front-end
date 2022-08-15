@@ -14,7 +14,7 @@ export const SignInBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 5%;
+  gap: 10%;
 `;
 export const SignInBoxTitle = styled.div`
   position: relative;
@@ -36,12 +36,12 @@ export const SignInBoxTitleSpan = styled.span`
 export const SignInBoxForm = styled.form`
   box-sizing: border-box;
   width: 100%;
-  height: 40%;
+  height: 50%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 20px;
 `;
 export const SignInBoxInputGroup = styled.div`
   box-sizing: border-box;
@@ -94,30 +94,13 @@ export const SignInBoxSpan = styled.span`
   font-family: NotoSansKR-Thin;
   font-size: 13px;
 `;
-export const SignInBoxSocialGroup = styled.div`
-  box-sizing: border-box;
+export const SignInBoxButtonGroup = styled.div`
+  height: 20%;
   width: 100%;
-  height: 15%;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 50px;
-  gap: 30px;
-  transition: 0.5s;
-  .icon-kakao {
-    color: #cecece;
-    &:hover {
-      color: #f7de29;
-      cursor: pointer;
-    }
-  }
-  .icon-naver {
-    color: #cecece;
-    &:hover {
-      color: #19ce60;
-      cursor: pointer;
-    }
-  }
+  gap: 55px;
 `;
 export const SignInBoxSignUp = styled.div`
   box-sizing: border-box;

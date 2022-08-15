@@ -1,12 +1,15 @@
-// Package import
+// React import
 import React from 'react';
 
-// Component import
+// Package import
+import ImageSlider from './ImageSlider.js';
+
+// Component & Element import
 import Header from '../../components/header/Header';
 import Footer from '../../components/footer/Footer';
+
+// Style import
 import { LandingBox, LandingText } from './Landing.styled';
-import ImageSlider from './ImageSlider.js';
-import '../../static/font/font.css';
 
 const Landing = () => {
   return (

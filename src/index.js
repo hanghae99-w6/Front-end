@@ -6,18 +6,14 @@ import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import store from './redux/configStore';
 
-// Style import
-import './index.css';
+// Package import
+import { BrowserRouter } from 'react-router-dom';
 
-// Component import
+// Component & Element import
 import App from './App';
 
 // Style import
 import './index.css';
-
-// Package import
-import { BrowserRouter } from 'react-router-dom';
-// import { CookieProvider } from 'react-cookie';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
