@@ -6,33 +6,34 @@ import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
+import 'swiper/css/autoplay';
 import './ImageSlider.css';
 
 // import required modules
-import { EffectCoverflow, Pagination, Navigation } from 'swiper';
+import { EffectCoverflow, Pagination, Navigation, Autoplay } from 'swiper';
 
 export default function ImageSlider() {
   return (
     <>
       <Swiper
         effect={'coverflow'}
+        autoplay={{ delay: 1000, disableOnInteraction: false }}
         loop={true}
         grabCursor={true}
         centeredSlides={true}
         slidesPerView={'auto'}
+        slideToClickedSlide= {true}
         coverflowEffect={{
           rotate: 0,
           stretch: 100,
           depth: 150,
           modifier: 1.5,
           slideShadows: false,
-          autoplay: 3000,
-          speed: 1000,
         }}
         pagination={{
           clickable: true,
         }}
-        modules={[EffectCoverflow, Pagination, Navigation]}
+        modules={[EffectCoverflow, Pagination, Navigation, Autoplay]}
         className="mySwiper"
       >
         <SwiperSlide>
