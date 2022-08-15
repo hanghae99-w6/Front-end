@@ -1,12 +1,12 @@
 // React import
-import { useRef, useState, useEffect, useCallback } from 'react';
+import { useRef, useState, useEffect, useCallback, Fragment } from 'react';
 
 // Redux import
 import { useDispatch } from 'react-redux';
 import {
   emailDupCheckThunk,
   nickNameDupCheckThunk,
-  addMemberThunk
+  addMemberThunk,
 } from '../../redux/modules/member';
 
 // Component import
@@ -56,7 +56,7 @@ const SignUp = () => {
   const rePasswordRef = useRef();
   const rePasswordSpanRef = useRef();
   const rePasswordIconRef = useRef();
-  const strengthBarRef = useRef()
+  const strengthBarRef = useRef();
 
   const emailRegExp =
     /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
@@ -65,7 +65,7 @@ const SignUp = () => {
     loginId: email,
     password,
     nickname,
-  }
+  };
 
   useEffect(() => {
     if (email !== '') emailIconRef.current.style.display = 'block';
@@ -85,7 +85,7 @@ const SignUp = () => {
       rePasswordSpanRef.current.style.color = '';
       rePasswordSpanRef.current.innerText = '';
       passwordSpanRef.current.style.color = '#f2153e';
-      passwordSpanRef.current.innerText = '패스워드를 입력해주세요';
+      passwordSpanRef.current.innerText = '비밀번호를 입력해주세요';
     } else if (repassword === '') {
       rePasswordSpanRef.current.style.color = '';
       passwordSpanRef.current.style.color = '';
@@ -101,6 +101,23 @@ const SignUp = () => {
       }
     }
   }, [password, repassword]);
+
+  useEffect(() => {
+    if (email !== '') {
+      checkLoginId(email);
+    } else {
+      emailRef.current.innerText = '';
+      emailRef.current.style.color = '';
+    }
+  }, [email]);
+  useEffect(() => {
+    if (nickname !== '') {
+      checkNickNameId(nickname);
+    } else {
+      nickNameRef.current.innerText = '';
+      nickNameRef.current.style.color = '';
+    }
+  }, [nickname]);
 
   const checkLoginId = useCallback(
     debounce((email) => {
@@ -123,7 +140,7 @@ const SignUp = () => {
         });
       }
     }, 500),
-    []
+    [email]
   );
   const checkNickNameId = useCallback(
     debounce((nickname) => {
@@ -139,25 +156,8 @@ const SignUp = () => {
         }
       });
     }, 500),
-    []
+    [nickname]
   );
-
-  useEffect(() => {
-    if (email !== '') {
-      checkLoginId(email);
-    } else {
-      emailRef.current.innerText = '';
-      emailRef.current.style.color = '';
-    }
-  }, [email]);
-  useEffect(() => {
-    if (nickname !== '') {
-      checkNickNameId(nickname);
-    } else {
-      nickNameRef.current.innerText = '';
-      nickNameRef.current.style.color = '';
-    }
-  }, [nickname]);
 
   const deleteText = (state) => {
     switch (state) {
@@ -211,7 +211,7 @@ const SignUp = () => {
 
   const signUpAccount = (event) => {
     event.preventDefault();
-    if (emailCheck === false)  {
+    if (emailCheck === false) {
       emailRef.current.focus();
       emailRef.current.style.color = 'white';
       emailRef.current.innerText = '중복되는 이메일입니다';
@@ -223,7 +223,8 @@ const SignUp = () => {
       if (strengthBarRef.current.state.score <= 2) {
         passwordRef.current.focus();
         passwordSpanRef.current.style.color = '#f2153e';
-        passwordSpanRef.current.innerText = '취약한 비밀번호입니다(영 대/소문자, 숫자, 특수문자 혼합)';
+        passwordSpanRef.current.innerText =
+          '취약한 비밀번호입니다(영 대/소문자, 숫자, 특수문자 혼합)';
         rePasswordSpanRef.current.style.innerText = '';
       } else if (password !== repassword) {
         passwordRef.current.style.innerText = '';
@@ -238,7 +239,7 @@ const SignUp = () => {
   };
 
   return (
-    <>
+    <Fragment>
       <Header />
       <SignUpBox>
         <SignUpBoxTitle>
@@ -309,10 +310,10 @@ const SignUp = () => {
               />
             </SignUpBoxInputWrap>
             <PasswordStrengthBar
-            password={password}
-            style={{ display: 'none' }}
-            ref={strengthBarRef}
-          />
+              password={password}
+              style={{ display: 'none' }}
+              ref={strengthBarRef}
+            />
             <SignUpBoxSpan ref={passwordSpanRef}>
               비밀번호를 입력해주세요
             </SignUpBoxSpan>
@@ -368,7 +369,7 @@ const SignUp = () => {
         </SignUpBoxForm>
       </SignUpBox>
       <Footer />
-    </>
+    </Fragment>
   );
 };
 

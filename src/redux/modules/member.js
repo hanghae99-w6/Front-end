@@ -3,6 +3,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 // Package import
 import axios from 'axios';
+import { setCookie } from '../../shared/cookie';
 
 // Redux Thunk 구현 부분
 export const emailDupCheckThunk = createAsyncThunk(
@@ -41,9 +42,20 @@ export const addMemberThunk = createAsyncThunk(
   'member/addMember',
   async (payload, thunkAPI) => {
     const resData = await axios
-			.post(`http://localhost:5001/member`, payload)
-			.then((res) => res.data);
-		return thunkAPI.fulfillWithValue(resData);
+      .post(`http://localhost:5001/member`, payload)
+      .then((res) => res.data);
+    return thunkAPI.fulfillWithValue(resData);
+  }
+);
+
+export const getMemberThunk = createAsyncThunk(
+  'member/getMember',
+  async (payload, thunkAPI) => {
+    const resData = await axios
+      .get(`http://localhost:5001/member`)
+      .then((res) => res.data);
+    const match = resData.find((user) => user.loginId === payload);
+    return thunkAPI.fulfillWithValue(match);
   }
 );
 
@@ -57,13 +69,14 @@ const initialState = {
 export const memberSlice = createSlice({
   name: 'member',
   initialState: initialState,
-  reducers: {},
-  extraReducers: (builder) => {
-    builder.addCase(addMemberThunk.fulfilled, (state, action) => {
-      state.member = action.payload.nickname;
-			state.loginStatus = true;
-    });
+  reducers: {
+    signInAction: (state, action) => {
+      setCookie('nickname', action.payload.nickname);
+      state.nickname = action.payload.nickname;
+      state.loginStatus = action.payload.loginStatus;
+    },
   },
+  extraReducers: (builder) => {},
 });
 
 export const { signInAction } = memberSlice.actions;

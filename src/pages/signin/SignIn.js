@@ -1,5 +1,9 @@
 // React import
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect, Fragment } from 'react';
+
+// Redux import
+import { useDispatch } from 'react-redux/es/exports';
+import { getMemberThunk, signInAction } from '../../redux/modules/member';
 
 // Component import
 import Header from '../../components/header/Header';
@@ -26,19 +30,23 @@ import {
   SignInBoxSocialGroup,
   SignInBoxSignUp,
   SignInBoxSignUpText,
-  SignInBoxSignUpLink
+  SignInBoxSignUpLink,
 } from './SignIn.styled';
 
 const SignIn = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const emailRef = useRef();
   const emailIconRef = useRef();
   const passwordRef = useRef();
   const passwordIconRef = useRef();
+
+  const emailRegExp =
+    /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 
   useEffect(() => {
     if (email !== '') emailIconRef.current.style.display = 'block';
@@ -54,14 +62,51 @@ const SignIn = () => {
     setPassword('');
   };
 
+  const signInAccount = async (event) => {
+    event.preventDefault();
+
+    dispatch(getMemberThunk(email)).then((res) => {
+      const data = res.payload;
+      if (email === '') {
+        emailRef.current.innerText = '계정을 입력해주세요';
+        emailRef.current.style.color = '#f2153e';
+        passwordRef.current.innerText = '';
+      } else if (emailRegExp.test(email) === false) {
+        emailRef.current.innerText = '이메일 형식에 맞지 않습니다';
+        emailRef.current.style.color = '#f2153e';
+        passwordRef.current.innerText = '';
+      }else {
+        if (!res.payload) {
+          emailRef.current.innerText = '없는 계정입니다';
+          emailRef.current.style.color = '#f2153e';
+          passwordRef.current.innerText = '';
+        } else {
+          if (password === '') {
+            emailRef.current.innerText = '';
+            passwordRef.current.innerText = '비밀번호를 입력해주세요';
+            passwordRef.current.style.color = '#f2153e';
+          } else {
+            if (data.password === password) {
+              dispatch(signInAction({ nickname: email, loginStatus: true }));
+              navigate('/');
+            } else {
+              passwordRef.current.style.color = '#f2153e';
+              passwordRef.current.innerText = '비밀번호가 일치하지 않습니다';
+            }
+          }
+        }
+      }
+    });
+  };
+
   return (
-    <>
+    <Fragment>
       <Header />
       <SignInBox>
         <SignInBoxTitle>
           <SignInBoxTitleSpan>Sign In</SignInBoxTitleSpan>
         </SignInBoxTitle>
-        <SignInBoxForm>
+        <SignInBoxForm onSubmit={(event) => signInAccount(event)}>
           <SignInBoxInputGroup>
             <SignInBoxInputWrap>
               <SignInBoxInput
@@ -96,6 +141,7 @@ const SignIn = () => {
             </SignInBoxSpan>
           </SignInBoxInputGroup>
           <Button
+            type={'submit'}
             text={'SIGN IN'}
             style={{
               width: '200px',
@@ -119,7 +165,7 @@ const SignIn = () => {
         </SignInBoxSignUp>
       </SignInBox>
       <Footer />
-    </>
+    </Fragment>
   );
 };
 
