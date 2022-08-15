@@ -11,6 +11,131 @@
       "password": "Zerobeauty159!",
       "nickname": "suzy",
       "id": 2
+    },
+    {
+      "loginId": "bcdqjatn@naver.com",
+      "password": "bcdqjatn222!",
+      "nickname": "안녕하세요",
+      "id": 3
+    }
+  ],
+
+  "comment": [
+    {
+      "id": 1,
+      "comment": "행복해요",
+      "subComment": [
+        {
+          "id": 1,
+          "comment": "나도 행복해요",
+          "likes": 22,
+          "createdAt": "2022-08-15",
+          "modifiedAt": "2022-08-15"
+        },
+        {
+          "id": 2,
+          "comment": "다같이 행복해요",
+          "likes": 33,
+          "createdAt": "2022-08-15",
+          "modifiedAt": "2022-08-15"
+        }
+      ],
+      "likes": 11,
+      "createdAt": "2022-08-15",
+      "modifiedAt": "2022-08-15"
+    }
+  ],
+
+  "post": [
+    {
+      "id": 1,
+      "title": "우리들의 블루스",
+      "imgUrl": "https://bucket-owner-full-control.s3.ap-northeast-2.amazonaws.com/20210531_003708.png",
+      "star": 5,
+      "content": "2022 최고의 드라마입니다!",
+      "createdAt": "2022-08-15",
+      "modifiedAt": "2022-08-15"
+    },
+    {
+      "id": 2,
+      "title": "우리들의 블루스",
+      "imgUrl": "",
+      "star": 5,
+      "content": "2022 최고의 드라마입니다!",
+      "createdAt": "2022-08-15",
+      "modifiedAt": "2022-08-15"
+    },
+    {
+      "id": 3,
+      "title": "우리들의 블루스",
+      "imgUrl": "",
+      "star": 5,
+      "content": "2022 최고의 드라마입니다!",
+      "createdAt": "2022-08-15",
+      "modifiedAt": "2022-08-15"
+    },
+    {
+      "id": 4,
+      "title": "우리들의 블루스",
+      "imgUrl": "https://bucket-owner-full-control.s3.ap-northeast-2.amazonaws.com/20210531_003708.png",
+      "star": 5,
+      "content": "2022 최고의 드라마입니다!",
+      "createdAt": "2022-08-15",
+      "modifiedAt": "2022-08-15"
+    },
+    {
+      "id": 5,
+      "title": "우리들의 블루스",
+      "imgUrl": "",
+      "star": 5,
+      "content": "2022 최고의 드라마입니다!",
+      "createdAt": "2022-08-15",
+      "modifiedAt": "2022-08-15"
+    },
+    {
+      "id": 6,
+      "title": "우리들의 블루스",
+      "imgUrl": "https://bucket-owner-full-control.s3.ap-northeast-2.amazonaws.com/20210531_003708.png",
+      "star": 5,
+      "content": "2022 최고의 드라마입니다!",
+      "createdAt": "2022-08-15",
+      "modifiedAt": "2022-08-15"
+    },
+    {
+      "id": 7,
+      "title": "우리들의 블루스",
+      "imgUrl": "https://bucket-owner-full-control.s3.ap-northeast-2.amazonaws.com/20210531_003708.png",
+      "star": 5,
+      "content": "2022 최고의 드라마입니다!",
+      "createdAt": "2022-08-15",
+      "modifiedAt": "2022-08-15"
+    },
+    {
+      "id": 8,
+      "title": "우리들의 블루스",
+      "imgUrl": "https://bucket-owner-full-control.s3.ap-northeast-2.amazonaws.com/20210531_003708.png",
+      "star": 5,
+      "content": "2022 최고의 드라마입니다!",
+      "createdAt": "2022-08-15",
+      "modifiedAt": "2022-08-15"
+    },
+    {
+      "id": 9,
+      "title": "우리들의 블루스",
+      "imgUrl": "https://bucket-owner-full-control.s3.ap-northeast-2.amazonaws.com/20210531_003708.png",
+      "star": 5,
+      "content": "2022 최고의 드라마입니다!",
+      "createdAt": "2022-08-15",
+      "modifiedAt": "2022-08-15"
+    },
+    {
+      "id": 10,
+      "title": "우리들의 블루스",
+      "imgUrl": "",
+      "star": 5,
+      "content": "2022 최고의 드라마입니다!",
+      "createdAt": "2022-08-15",
+      "modifiedAt": "2022-08-15"
     }
   ],
   "post": [

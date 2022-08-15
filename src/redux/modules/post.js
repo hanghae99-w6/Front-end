@@ -19,6 +19,7 @@ export const getPostThunk = createAsyncThunk(
 
 // Post 초기 상태 값
 const initialState = {
+  detail_is_loaded: false,
   is_loaded: false,
   post: [],
 };

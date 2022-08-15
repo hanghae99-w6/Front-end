@@ -43,12 +43,14 @@ export const SignInBoxForm = styled.form`
   align-items: center;
   gap: 20px;
 `;
+
 export const SignInBoxInputGroup = styled.div`
   box-sizing: border-box;
   width: 80%;
   display: flex;
   flex-direction: column;
   gap: 10px;
+  border: 1px solid green;
 `;
 export const SignInBoxInputWrap = styled.div`
   position: relative;
@@ -57,6 +59,7 @@ export const SignInBoxInputWrap = styled.div`
   height: 50px;
   display: flex;
   flex-direction: column;
+  border: 1px solid yellow;
 `;
 export const SignInBoxInput = styled.input`
   position: absolute;
