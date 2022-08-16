@@ -4,6 +4,9 @@
 /node_modules
 /.pnp
 .pnp.js
+git rm -r --cached .
+git add .
+git commit -m "fixed untracked files"
 
 # testing
 /coverage
