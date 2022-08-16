@@ -4,7 +4,6 @@ export const ImagePostBox = styled.div`
   grid-row-end: span 20;
   width: 290px;
   backdrop-filter: blur(5px);
-
   background: rgba(255, 255, 255, 0.35);
   -webkit-backdrop-filter: blur(7px);
   border: 1px solid rgba(255, 255, 255, 0.18);
@@ -21,7 +20,7 @@ export const PostBoxImage = styled.div`
   background-size: contain;
   background-repeat: no-repeat;
   width: 100%;
-  height: 80%;
+  height: 75%;
   &:hover {
     .text {
       opacity: 0.9;
@@ -47,4 +46,13 @@ export const PostBoxButtonGroup = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+`;
+export const PostBoxCreatedDate = styled.div`
+  font-family: NotoSansKR-Light;
+  box-sizing: border-box;
+  width: 90%;
+  height: 5.5%;
+  text-align: right;
+  font-size: 12px;
+  color: #202020;
 `;

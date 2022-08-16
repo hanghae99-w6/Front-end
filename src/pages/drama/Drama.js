@@ -69,7 +69,7 @@ const Drama = () => {
       </DramaBox>
       <ButtonBox>
         <Button
-          _onClick={() => navigate('/write')}
+          _onClick={() => navigate('/write/drama')}
           type={'button'}
           style={{
             width: '200px',

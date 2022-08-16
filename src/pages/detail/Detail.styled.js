@@ -16,7 +16,7 @@ export const DetailBox = styled.div`
 export const DetailTitle = styled.div`
   position: absolute;
   width: 600px;
-  height: 50px;
+  height: 40px;
   border: 1px solid orange;
   left: 550px;
   top: 30px;
@@ -27,11 +27,11 @@ export const DetailTitle = styled.div`
 export const DetailStar = styled.div`
   position: absolute;
   width: 600px;
-  height: 50px;
+  height: 40px;
   border: 1px solid yellow;
   transform: translateY(100px);
   left: 550px;
-  top: 30px;
+  top: 5px;
   text-align: center;
   color: white;
 `;
@@ -41,9 +41,8 @@ export const DetailContent = styled.div`
   width: 600px;
   height: 100px;
   border: 1px solid green;
-  transform: translateY(200px);
+  transform: translateY(180px);
   left: 550px;
-  top: 30px;
   text-align: center;
   color: white;
 `;
@@ -58,18 +57,6 @@ export const DetailImage = styled.div`
   border: 1px solid blue;
   left: 25px;
   top: 30px;
-  text-align: center;
-  color: white;
-`;
-
-export const DetailCommentBox = styled.div`
-  position: absolute;
-  width: 600px;
-  height: 290px;
-  border: 2px solid purple;
-  transform: translateY(350px);
-  left: 550px;
-  top: 25px;
   text-align: center;
   color: white;
 `;

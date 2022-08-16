@@ -6,9 +6,14 @@ import Button from '../../elements/button/Button';
 import Like from '../like/Like';
 
 // Style import
-import {PostBox, PostBoxText, PostBoxButtonGroup} from './Post.styled'
+import {
+  PostBox,
+  PostBoxText,
+  PostBoxButtonGroup,
+  PostBoxCreatedDate,
+} from './Post.styled';
 
-const Post = ({ id, title, content, likes, crseatedAt, modifiedAt }) => {
+const Post = ({ id, title, content, likes, createdAt, modifiedAt }) => {
   const navigate = useNavigate();
 
   return (
@@ -23,6 +28,7 @@ const Post = ({ id, title, content, likes, crseatedAt, modifiedAt }) => {
           style={{ width: '170px', height: '40px', bg_color: '#fcd1df' }}
         />
       </PostBoxButtonGroup>
+      <PostBoxCreatedDate>작성일: {createdAt}</PostBoxCreatedDate>
     </PostBox>
   );
 };
