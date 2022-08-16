@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import '../../static/font/font.css';
 
 export const SignInBox = styled.div`
-  z-index: 1;
   position: absolute;
   border-radius: 5%;
   top: 20%;
@@ -50,7 +49,6 @@ export const SignInBoxInputGroup = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
-  border: 1px solid green;
 `;
 export const SignInBoxInputWrap = styled.div`
   position: relative;
@@ -59,7 +57,6 @@ export const SignInBoxInputWrap = styled.div`
   height: 50px;
   display: flex;
   flex-direction: column;
-  border: 1px solid yellow;
 `;
 export const SignInBoxInput = styled.input`
   position: absolute;

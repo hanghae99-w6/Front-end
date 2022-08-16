@@ -3,6 +3,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 // Axios import
 import { api, api_auth } from '../../shared/api';
+import axios from 'axios';
 
 // Package import
 import { setCookie } from '../../shared/cookie';
@@ -11,32 +12,22 @@ import { setCookie } from '../../shared/cookie';
 export const emailDupCheckThunk = createAsyncThunk(
   'member/emailDupCheck',
   async (payload, thunkAPI) => {
-    let check = false;
     const resData = await api
-      .get(`http://localhost:5001/member`)
+      .post(`http://3.37.127.16:8080/api/members/idcheck`, payload)
       .then((res) => res.data)
       .catch((error) => console.err(error));
-    resData.forEach((member) => {
-      console.log(member.loginId);
-      if (payload === member.loginId) check = true;
-    });
-    return thunkAPI.fulfillWithValue(check);
+    return thunkAPI.fulfillWithValue(resData);
   }
 );
 
 export const nickNameDupCheckThunk = createAsyncThunk(
   'member/nickNameDupCheckThunk',
   async (payload, thunkAPI) => {
-    let check = false;
     const resData = await api
-      .get(`http://localhost:5001/member`)
-      .then((res) => res.data)
+      .post(`http://3.37.127.16:8080/api/members/nicknamecheck`, payload)
+      .then((res) => res.data.success)
       .catch((error) => console.err(error));
-    resData.forEach((member) => {
-      console.log(member.nickname);
-      if (payload === member.nickname) check = true;
-    });
-    return thunkAPI.fulfillWithValue(check);
+    return thunkAPI.fulfillWithValue(resData);
   }
 );
 
@@ -44,20 +35,23 @@ export const addMemberThunk = createAsyncThunk(
   'member/addMember',
   async (payload, thunkAPI) => {
     const resData = await api
-      .post(`http://localhost:5001/member`, payload)
+      .post(`http://3.37.127.16:8080/api/members/signup`, payload)
       .then((res) => res.data);
     return thunkAPI.fulfillWithValue(resData);
   }
 );
 
-export const getMemberThunk = createAsyncThunk(
-  'member/getMember',
+export const signMemberThunk = createAsyncThunk(
+  'member/signMember',
   async (payload, thunkAPI) => {
+    console.log('axios start');
     const resData = await api
-      .get(`http://localhost:5001/member`)
-      .then((res) => res.data);
-    const match = resData.find((user) => user.loginId === payload);
-    return thunkAPI.fulfillWithValue(match);
+      .get(`http://3.37.127.16:8080/api/members/login`)
+      .then((res) => {
+        console.log(res);
+        return res.data.success;
+      });
+    return thunkAPI.fulfillWithValue(resData);
   }
 );
 

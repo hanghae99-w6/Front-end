@@ -68,7 +68,17 @@ const Entertain = () => {
         )}
       </EntertainBox>
       <ButtonBox>
-        <Button _onClick={() => navigate('/write')} type={'button'} style={{width: '200px', height: '50px', color: 'white', bg_color: '#ff8eb2'}} text={'포스팅하기'} />
+        <Button
+          _onClick={() => navigate('/write/entertain')}
+          type={'button'}
+          style={{
+            width: '200px',
+            height: '50px',
+            color: 'white',
+            bg_color: '#ff8eb2',
+          }}
+          text={'포스팅하기'}
+        />
       </ButtonBox>
       <Footer />
     </Fragment>

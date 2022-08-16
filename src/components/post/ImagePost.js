@@ -11,6 +11,7 @@ import {
   PostBoxImage,
   PostBoxImageText,
   PostBoxButtonGroup,
+  PostBoxCreatedDate,
 } from './ImagePost.styled';
 
 const ImagePost = ({
@@ -19,7 +20,7 @@ const ImagePost = ({
   content,
   likes,
   imgUrl,
-  crseatedAt,
+  createdAt,
   modifiedAt,
 }) => {
   return (
@@ -35,6 +36,7 @@ const ImagePost = ({
           style={{ width: '170px', height: '40px', bg_color: '#fcd1df' }}
         />
       </PostBoxButtonGroup>
+      <PostBoxCreatedDate>작성일: {createdAt}</PostBoxCreatedDate>
     </ImagePostBox>
   );
 };

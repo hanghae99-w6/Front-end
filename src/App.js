@@ -18,7 +18,7 @@ function App() {
       <Route path='/'  exact='true' element={<Landing />} />
       <Route path='/signin' element={<SignIn />} />
       <Route path='/signup' element={<SignUp />} />
-      <Route path='/write' element={<Write />} />
+      <Route path='/write/:category' element={<Write />} />
       <Route path='/kakao' element={<Kakao />} />
       <Route path='/movie' element={<Movie />} />
       <Route path='/drama' element={<Drama />} />

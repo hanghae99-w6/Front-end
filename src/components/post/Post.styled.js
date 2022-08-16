@@ -18,7 +18,7 @@ export const PostBoxText = styled.div`
   box-sizing: border-box;
   padding: 10px;
   width: 100%;
-  height: 60%;
+  height: 54%;
   font-family: NotoSansKR-Light;
   border-radius: 10px;
   padding: 10px;
@@ -30,8 +30,17 @@ export const PostBoxText = styled.div`
 export const PostBoxButtonGroup = styled.div`
   box-sizing: border-box;
   width: 90%;
-  height: 40%;
+  height: 35%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+`;
+export const PostBoxCreatedDate = styled.div`
+  font-family: NotoSansKR-Light;
+  box-sizing: border-box;
+  width: 90%;
+  height: 1%;
+  text-align: right;
+  font-size: 12px;
+  color: #202020;
 `;

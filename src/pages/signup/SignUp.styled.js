@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import '../../static/font/font.css';
 
 export const SignUpBox = styled.div`
-  z-index: 1;
   position: absolute;
   border-radius: 5%;
   top: 20%;

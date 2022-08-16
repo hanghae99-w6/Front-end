@@ -1,3 +1,4 @@
+// Style import
 import { StyledButton } from './Button.styled';
 
 const Button = ({ type, text, style, _onClick }) => {

@@ -3,12 +3,10 @@ import { useRef, useState, useCallback, useEffect, Fragment } from 'react';
 
 // Redux import
 import { useDispatch } from 'react-redux/es/exports';
-import { getMemberThunk, signInAction } from '../../redux/modules/member';
+import { signMemberThunk, signInAction } from '../../redux/modules/member';
 
 // Package import
 import { useNavigate } from 'react-router-dom';
-import { RiKakaoTalkFill } from 'react-icons/ri';
-import { SiNaver } from 'react-icons/si';
 import { MdCancel } from 'react-icons/md';
 
 // Component & Element import
@@ -65,42 +63,31 @@ const SignIn = () => {
     setPassword('');
   }, [password]);
 
-  const signInAccount = useCallback(async (event) => {
-    event.preventDefault();
-
-    dispatch(getMemberThunk(email)).then((res) => {
-      const data = res.payload;
-      if (email === '') {
-        emailRef.current.innerText = '계정을 입력해주세요';
-        emailRef.current.style.color = '#f2153e';
-        passwordRef.current.innerText = '';
-      } else if (emailRegExp.test(email) === false) {
-        emailRef.current.innerText = '이메일 형식에 맞지 않습니다';
-        emailRef.current.style.color = '#f2153e';
-        passwordRef.current.innerText = '';
-      } else {
-        if (!res.payload) {
-          emailRef.current.innerText = '없는 계정입니다';
+  const signInAccount = useCallback(
+    async (event) => {
+      event.preventDefault();
+      console.log(email);
+      dispatch(signMemberThunk({ loginId: email, password })).then((res) => {
+        if (email === '') {
+          emailRef.current.innerText = '계정을 입력해주세요';
+          emailRef.current.style.color = '#f2153e';
+          passwordRef.current.innerText = '';
+        } else if (emailRegExp.test(email) === false) {
+          emailRef.current.innerText = '이메일 형식에 맞지 않습니다';
           emailRef.current.style.color = '#f2153e';
           passwordRef.current.innerText = '';
         } else {
-          if (password === '') {
-            emailRef.current.innerText = '';
-            passwordRef.current.innerText = '비밀번호를 입력해주세요';
-            passwordRef.current.style.color = '#f2153e';
+          if (res.payload) {
+            dispatch(signInAction({ nickname: email, loginStatus: true }));
+            navigate('/');
           } else {
-            if (data.password === password) {
-              dispatch(signInAction({ nickname: email, loginStatus: true }));
-              navigate('/');
-            } else {
-              passwordRef.current.style.color = '#f2153e';
-              passwordRef.current.innerText = '비밀번호가 일치하지 않습니다';
-            }
+            alert('로그인 실패하였습니다.');
           }
         }
-      }
-    });
-  }, []);
+      });
+    },
+    [email, password]
+  );
 
   return (
     <Fragment>
@@ -123,9 +110,7 @@ const SignIn = () => {
                 <MdCancel onClick={deleteEmailText} className="icon" />
               </SignInBoxInputIcon>
             </SignInBoxInputWrap>
-            <SignInBoxSpan ref={emailRef}>
-              이메일 주소를 확인해주세요.
-            </SignInBoxSpan>
+            <SignInBoxSpan ref={emailRef}></SignInBoxSpan>
           </SignInBoxInputGroup>
           <SignInBoxInputGroup>
             <SignInBoxInputWrap>
@@ -139,9 +124,7 @@ const SignIn = () => {
                 <MdCancel onClick={deletePasswordText} className="icon" />
               </SignInBoxInputIcon>
             </SignInBoxInputWrap>
-            <SignInBoxSpan ref={passwordRef}>
-              비밀번호를 확인해주세요
-            </SignInBoxSpan>
+            <SignInBoxSpan ref={passwordRef}></SignInBoxSpan>
           </SignInBoxInputGroup>
           <SignInBoxButtonGroup>
             <Button

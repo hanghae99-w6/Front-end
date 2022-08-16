@@ -126,16 +126,15 @@ const SignUp = () => {
         emailRef.current.style.color = '#f2153e';
         setEmailCheck(false);
       } else {
-        dispatch(emailDupCheckThunk(email)).then((res) => {
-          console.log(res);
+        dispatch(emailDupCheckThunk({ loginId: email })).then((res) => {
           if (res.payload) {
-            emailRef.current.innerText = '중복되는 이메일입니다';
-            emailRef.current.style.color = '#f2153e';
-            setEmailCheck(false);
-          } else {
             emailRef.current.innerText = '사용가능한 이메일입니다';
             emailRef.current.style.color = '#0fe05f';
             setEmailCheck(true);
+          } else {
+            emailRef.current.innerText = '중복되는 이메일입니다';
+            emailRef.current.style.color = '#f2153e';
+            setEmailCheck(false);
           }
         });
       }
@@ -144,15 +143,15 @@ const SignUp = () => {
   );
   const checkNickNameId = useCallback(
     debounce((nickname) => {
-      dispatch(nickNameDupCheckThunk(nickname)).then((res) => {
+      dispatch(nickNameDupCheckThunk({ nickname })).then((res) => {
         if (res.payload) {
-          nickNameRef.current.innerText = '중복되는 닉네임입니다';
-          nickNameRef.current.style.color = '#f2153e';
-          setNickNameCheck(false);
-        } else {
           nickNameRef.current.innerText = '사용가능한 닉네임입니다';
           nickNameRef.current.style.color = '#0fe05f';
           setNickNameCheck(true);
+        } else {
+          nickNameRef.current.innerText = '중복되는 닉네임입니다';
+          nickNameRef.current.style.color = '#f2153e';
+          setNickNameCheck(false);
         }
       });
     }, 500),
@@ -237,6 +236,7 @@ const SignUp = () => {
         rePasswordSpanRef.current.focus();
         rePasswordSpanRef.current.innerText = '입력한 비밀번호와 다릅니다';
       } else {
+        console.log(newMember);
         dispatch(addMemberThunk(newMember));
         alert('Watchao의 멤버가 되신것을 축하드립니다!🎉');
         navigate('/signin');
@@ -268,9 +268,7 @@ const SignUp = () => {
                 />
               </SignUpBoxInputIcon>
             </SignUpBoxInputWrap>
-            <SignUpBoxSpan ref={emailRef}>
-              이메일 주소를 확인해주세요
-            </SignUpBoxSpan>
+            <SignUpBoxSpan ref={emailRef}></SignUpBoxSpan>
           </SignUpBoxInputGroup>
           <SignUpBoxInputGroup>
             <SignUpBoxInputWrap>
@@ -290,9 +288,7 @@ const SignUp = () => {
                 />
               </SignUpBoxInputIcon>
             </SignUpBoxInputWrap>
-            <SignUpBoxSpan ref={nickNameRef}>
-              닉네임을 확인해주세요
-            </SignUpBoxSpan>
+            <SignUpBoxSpan ref={nickNameRef}></SignUpBoxSpan>
           </SignUpBoxInputGroup>
           <SignUpBoxInputGroup>
             <SignUpBoxInputWrap>
@@ -320,9 +316,7 @@ const SignUp = () => {
               style={{ display: 'none' }}
               ref={strengthBarRef}
             />
-            <SignUpBoxSpan ref={passwordSpanRef}>
-              비밀번호를 입력해주세요
-            </SignUpBoxSpan>
+            <SignUpBoxSpan ref={passwordSpanRef}></SignUpBoxSpan>
           </SignUpBoxInputGroup>
           <SignUpBoxInputGroup>
             <SignUpBoxInputWrap>
@@ -345,9 +339,7 @@ const SignUp = () => {
                 className="icon-password"
               />
             </SignUpBoxInputWrap>
-            <SignUpBoxSpan ref={rePasswordSpanRef}>
-              비밀번호가 일치하지 않습니다
-            </SignUpBoxSpan>
+            <SignUpBoxSpan ref={rePasswordSpanRef}></SignUpBoxSpan>
           </SignUpBoxInputGroup>
           <SignUpButtonGroup>
             <Button
@@ -356,7 +348,7 @@ const SignUp = () => {
               style={{
                 width: '170px',
                 height: '50px',
-                ft_size: '20px',
+                ft_size: '15px',
                 color: '#202020',
               }}
             />
@@ -367,7 +359,7 @@ const SignUp = () => {
               style={{
                 width: '170px',
                 height: '50px',
-                ft_size: '20px',
+                ft_size: '15px',
                 color: '#202020',
                 bg_color: '#727272',
               }}
