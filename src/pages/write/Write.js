@@ -3,10 +3,10 @@ import { Fragment, useEffect, useState, useRef, useCallback } from 'react';
 
 // Redux import
 import { useDispatch, useSelector } from 'react-redux';
-import { getPostThunk } from '../../redux/modules/post';
+import { addPostThunk } from '../../redux/modules/post';
 
 // Package import
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import DropImage from '../../components/dropimage/DropImage';
 import { MdCancel } from 'react-icons/md';
 
@@ -24,9 +24,22 @@ const Write = () => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [rating, setRating] = useState('');
+  const [file, setFile] = useState('');
 
   const titleIconRef = useRef();
   const contentIconRef = useRef();
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { category } = useParams();
+
+  const newPost = {
+    category,
+    title,
+    content,
+    imgUrl: file,
+    star: rating,
+  };
 
   const deleteTitleText = useCallback(() => {
     setTitle('');
@@ -42,11 +55,22 @@ const Write = () => {
     else contentIconRef.current.style.display = 'none';
   }, [title, content]);
 
+  const onSubmitPost = (e) => {
+    e.preventDefault();
+
+    console.log(newPost);
+    if (rating === '') alert('별점을 남겨주세요!');
+    else {
+      dispatch(addPostThunk(newPost));
+      navigate(`/${category}`);
+    }
+  };
+
   return (
     <Fragment>
       <Header />
       <WriteBox>
-        <WriteBoxForm>
+        <WriteBoxForm onSubmit={(e) => onSubmitPost(e)}>
           <WriteBoxTitle>
             <WriteBoxInputGroup>
               <WriteBoxInputWrap>
@@ -64,7 +88,7 @@ const Write = () => {
             </WriteBoxInputGroup>
           </WriteBoxTitle>
           <WriteBoxImageUpload>
-            <DropImage></DropImage>
+            <DropImage file={file} setFile={setFile}></DropImage>
           </WriteBoxImageUpload>
           <WriteBoxComment>
             <WriteBoxCommentWrap>
@@ -125,8 +149,7 @@ export const WriteBoxForm = styled.form`
 export const WriteBoxTitle = styled.div`
   box-sizing: border-box;
   width: 100%;
-  height: 17%;
-  border: 1px solid green;
+  height: 14%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -185,14 +208,15 @@ export const WriteBoxSpan = styled.span`
 export const WriteBoxImageUpload = styled.div`
   box-sizing: border-box;
   width: 100%;
-  height: 42%;
-  border: 1px solid white;
+  height: 45%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 export const WriteBoxComment = styled.div`
   box-sizing: border-box;
   width: 100%;
   height: 26%;
-  border: 1px solid red;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -202,7 +226,6 @@ export const WriteBoxCommentWrap = styled.div`
   box-sizing: border-box;
   width: 80%;
   height: 100%;
-  border: 1px solid red;
 `;
 export const WriteBoxCommentArea = styled.textarea`
   position: absolute;
@@ -240,14 +263,12 @@ export const WriteBoxStarButton = styled.div`
   box-sizing: border-box;
   width: 100%;
   height: 15%;
-  border: 1px solid red;
   display: flex;
 `;
 export const WriteBoxStar = styled.div`
   box-sizing: border-box;
   width: 50%;
   height: 100%;
-  border: 1px solid yellow;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -265,5 +286,4 @@ export const WriteBoxButton = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid yellow;
 `;

@@ -1,25 +1,32 @@
-import axios from "axios";
+import axios from 'axios';
+import { getCookie } from './cookie';
 
-const accessToken = document.cookie.split("=")[1];
-const refreshToken = document.cookie.split("=")[2];
+const SERVER_IP = process.env.REACT_APP_REST_IP_ADDR;
+
+const accessToken = getCookie('authorization');
+const refreshToken = window.localStorage.getItem('refresh-token');
 
 export const api_auth = axios.create({
-  baseURL: "http://localhost:5001",
+  baseURL: `http://${SERVER_IP}`,
   headers: {
-    "content-type": "application/json;charset=UTF-8",
-    accept: "application/json,",
-    "Refresh-Token": `${refreshToken}`,
-    Authorization: `bearer ${accessToken}`,
+    'content-type': 'application/json;charset=UTF-8',
+    accept: 'application/json,',
+    'refresh-token': `${refreshToken}`,
+    authorization: `Bearer ${accessToken}`,
   },
 });
 
 export const api = axios.create({
-  baseURL: "http://localhost:5001",
+  baseURL: `http://${SERVER_IP}`,
   headers: {
-    "content-type": "application/json;charset=UTF-8",
-    accept: "application/json,",
+    'content-type': 'application/json;charset=UTF-8',
+    accept: 'application/json,',
   },
 });
 
-// hearder - multipart/form-data 
-// Body key - multipartFile 
+export const api_image = axios.create({
+  baseURL: `http://${SERVER_IP}`,
+  headers: {
+    'content-type': 'multipart/form-data',
+  },
+});
