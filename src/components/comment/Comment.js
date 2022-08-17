@@ -1,65 +1,27 @@
 import styled from 'styled-components';
-import React, {useCallback, useEffect, useState} from "react";
 import { useNavigate } from 'react-router-dom';
-import { useSelector } from "react-redux";
-import axios from "axios";
 
-const Comment = () => {
+// Component & Element import
+import { useState } from 'react';
+const Comment = ({ postId, content, createdAt, modifiedAt }) => {
+  const navigate = useNavigate();
+  const [comment, setComment] = useState;
 
-  // 로그인 후 현재 경로로 돌아오기 위해 useLocation 사용
-  // const location = useLocation();
-
-  const navigate = useNavigate
-  const [commentList, setCommentList] = useState([]);
-
-  //입력한 댓글 내용
-  const [comment, setComment] = useState('');
-  const token = useSelector((state) => state.Auth.token);
-
-  // 현재 페이지, 전체 페이지 갯수
-  const [page, setPage] = useState(1);
-  const [pageCount, setPageCount] = useState(0);
-
-  //처음에 만들어놨었음
-  const commentData = useSelector((state) => state.comment.comment);
-  const is_loaded = useSelector((state) => state.comment.is_loaded);
-
-  useEffect(() => {
-    const getCommentList = async () => {
-      const { data } = await axios.get(
-        `/api/comment/list?comment_id=${commentData}&page_number=${page}&page_size=${5}`
-      );
-      return data;
-    };
-
-    //기존 commentList에 데이터를 덧붙임
-    getCommentList().then((result) =>
-      setCommentList([...commentList, ...result])
-    );
-  }, [page]);
-
-  // 댓글 추가하기, 댓글 추가하는 API는 인증 미들웨어가 설정되어 있으므로
-  // HTTP HEADER에 jwt-token 정보를 보내는 interceptor 사용
-  const submit = useCallback(async () => {
-    const comment = {
-      comment_id: commentData,
-      // DB에 엔터가 먹힌 상태로 들어가므로 제대로 화면에 띄우기 위해 <br>로 치환
-      comment: comment,
-    }
-    // axios interceptor 사용 : 로그인한 사용자만 쓸 수 있다!
-  }, []);
-  console.log(commentList)
-
+  
+  // //처음에 만들어놨었음
+  // const commentData = useSelector((state) => state.comment.comment);
+  // const is_loaded = useSelector((state) => state.comment.is_loaded);
 };
 
 export default Comment;
 
 export const DetailCommentBox = styled.div`
   position: absolute;
-  width: 600px;
-  height: 365px;
+  width: 620px;
+  height: 390px;
   border: 1px solid purple;
-  transform: translateY(300px);
+  border-radius: 10px;
+  transform: translateY(267px);
   left: 550px;
   text-align: left;
   color: white;
@@ -70,41 +32,79 @@ export const DetailCommentHeader = styled.div`
   position: relative;
   box-sizing: border-box;
   width: 100%;
-  height: 70px;
+  height: 120px;
   display: flex;
   flex-direction: row;
-  gap: 10px;
-  border: 1px solid blue;
+  gap: 15px;
   text-align: left;
+  transform: translateY(5px);
+  border: 1px solid blue;
+  background-color: white;
+  border-radius: 10px;
+`;
+
+export const DetailCommentComments = styled.div`
+  position: absolute;
+  width: 22%;
+  height: 30px;
+  border-width: 0px;
+  border-bottom: 1px;
+  border-style: solid;
+  border-color: black;
+  font-size: 24px;
+  font-family: NotoSansKR-Regular;
+  color: black;
+  left: 3%;
+  transform: translateY(10px);
 `;
 
 export const DetailCommentInput = styled.input`
   position: relative;
-  display: flex;
-  width: 80%;
-  height: 23px;
-  resize: none;
-  font-size: 12x;
+  width: 75%;
+  height: 26px;
+  font-size: 16px;
   line-height: 125%;
   padding: 12px;
-  border-radius: 8px;
-  border: 1px solid yellow;
-  outline: none;
-  &:focus {
-    border: 3px solid yellow;
+  border-width: 0px;
+  border-bottom: 2px;
+  border-style: solid;
+  border-color: black;
+  font-family: NotoSansKR-Light;
+  background-color: transparent;
+  top: 40%;
+  left: 3%;
+`;
+
+export const CommentBoxButton = styled.div`
+  .content-icon {
+    position: absolute;
+    right: 10px;
+    top: 70%;
+    display: flex;
+    flex-direction: row;
+    font-size: 30px;
+    color: #202020;
+    &:hover {
+      cursor: pointer;
+    }
   }
-  top: 5px;
+  position: absolute;
+  width: 10%;
+  height: 40%;
+  top: 43%;
+  left: 84%;
 `;
 
 export const DetailCommentGroup = styled.div`
   position: relative;
   box-sizing: border-box;
   width: 100%;
-  height: 285px;
-  top: 5%;
+  height: 243px;
+  top: 7%;
   display: flex;
   flex-direction: column;
-  border: 1px solid yellow;
+  background-color: rgba(255,255,255,0.35);
+  border-radius: 10px;
   align-items: center;
 `;
 
@@ -119,36 +119,87 @@ export const DetailCommentGroupInput = styled.div`
   top: 10px;
   border-radius: 8px;
   border: 1px solid green;
-  outline: none;
+`;
+
+export const DetailCommentStatusBox = styled.div`
+  position: relative;
+  height: 40px;
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid yellow;
+  background: white;
+  border-radius: 10px;
+  line-height: 40px;
+  font-size: 18px;
 `;
 
 export const DetailCommentStatus = styled.div`
   position: absolute;
   height: 40px;
-  width: 90%;
+  width: 85%;
   border-radius: 8px;
   border: 1px solid blue;
+  border-radius: 10px;
+  color: #202020;
+  text-align: left;
+`;
+
+export const DetailCommentEditButton = styled.div`
+  position: absolute;
+  width: 6%;
+  border: 1px solid pink;
+  font-size: 14px;
+  left: 485px;
+  height: 40px;
+  border-radius: 10px;
+  color: #202020;
+  &:hover {
+    cursor: pointer;
+    .text {
+      opacity: 0.9;
+      color: white;
+    }
+  }
+`;
+
+export const DetailCommentDeleteButton = styled.div`
+  position: absolute;
+  width: 6%;
+  border: 1px solid pink;
+  font-size: 14px;
+  left: 525px;
+  height: 40px;
+  border-radius: 10px;
+  color: #202020;
+  &:hover {
+    cursor: pointer;
+    .text {
+      opacity: 0.9;
+      color: white;
+    }
+  }
 `;
 
 export const DetailCommentLikes = styled.div`
   position: absolute;
-  width: 20%;
-  border: 1px solid red;
-  display: flex;
-  flex-direction: row;
-  border-radius: 8px;
-  height: 30px;
   top: 60%;
+`;
+
+export const DetailCommentCreatedAt = styled.div`
+  position: absolute;
+  border: 1px solid red;
+  width: 25%;
+  left: 73%;
+  top: 68%;
+  color: #202020;
 `;
 
 export const DetailSubCommentButton = styled.div`
   position: absolute;
-  width: 25%;
+  width: 12%;
   border: 1px solid red;
-  display: flex;
-  flex-direction: row;
-  border-radius: 8px;
-  height: 30px;
-  top: 60%;
-  left: 67%;
+  height: 20px;
+  top: 68%;
+  left: 20%;
+  color: green;
 `;

@@ -1,138 +1,211 @@
 // React import
 import { useState, useEffect, Fragment } from 'react';
-import {
-  DetailBox,
-  DetailTitle,
-  DetailStar,
-  DetailContent,
-  DetailImage,
-} from './Detail.styled';
 
+//Redux import
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  addCommentThunk,
+  deleteCommentThunk,
+  getCommentThunk,
+} from '../../redux/modules/comment';
+
+// Package import
 import { useNavigate, useParams } from 'react-router-dom';
 
+// Component & Element import
+import Header from '../../components/header/Header';
+import Footer from '../../components/footer/Footer';
+import Button from '../../elements/button/Button';
+import Star from '../../components/star/Star';
+import LikeButton from '../../components/like/Like';
 import {
   DetailCommentHeader,
   DetailCommentInput,
   DetailCommentGroup,
   DetailCommentBox,
   DetailCommentGroupInput,
-  DetailCommentLikes,
+  DetailCommentStatusBox,
   DetailCommentStatus,
+  DetailCommentEditButton,
+  DetailCommentDeleteButton,
   DetailSubCommentButton,
+  DetailCommentLikes,
+  DetailCommentCreatedAt,
+  DetailCommentComments,
+  CommentBoxButton,
 } from '../../components/comment/Comment';
+import Comment from '../../components/comment/Comment';
 
-import { DetailSubCommentInput } from '../../components/subcomment/SubComment';
+// import { DetailSubCommentInput } from '../../components/subcomment/SubComment';
 
-//Redux import
-import { useDispatch, useSelector } from 'react-redux';
-import comment, { getCommentThunk } from '../../redux/modules/comment';
-
-// Component import
-import Header from '../../components/header/Header';
-import Footer from '../../components/footer/Footer';
-import Button from '../../elements/button/Button';
-import axios from 'axios';
-import post from '../../redux/modules/post';
+// Style import
+import {
+  DetailBox,
+  DetailTitle,
+  DetailStar,
+  DetailContent,
+  DetailImage,
+  ButtonBox,
+} from './Detail.styled';
+import { AiFillLike } from 'react-icons/ai';
 
 const Detail = () => {
-  // 로그인 후 현재 경로로 돌아오기 위해 useLocation 사용
-  // const location = useLocation();
-  const { post_id } = useParams();
-  const { post, setPost } = useState({});
-  const [comment, setComment] = useState('');
-  const [is_loaded, setIs_loaded] = useState(false);
-  const token = useSelector((state) => state.Auth.token);
+  const initialState = {
+    id: 1,
+    title: '우리들의 블루스',
+    imgUrl:
+      'https://bucket-owner-full-control.s3.ap-northeast-2.amazonaws.com/20210531_003708.png',
+    star: 5,
+    comment: '행복해요',
+    content: '2022 최고의 드라마입니다!',
+    createdAt: '2022-08-15',
+    modifiedAt: '2022-08-15',
+    subComment: {
+      id: 1,
+      comment: '나도 행복해요',
+      likes: 22,
+      createdAt: '2022-08-15',
+      modifiedAt: '2022-08-15',
+    },
+  };
+
+  let [addComment, setAddComment] = useState(initialState);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { id } = useParams();
+  const [comment, setComment] = useState(initialState);
+  // const [comment, setComment] = useState('')
+  // comment 이 변수이게 계속 바뀔 것 같다
 
-  const [commentList, setCommentList] = useState([]);
+  const is_loaded = useSelector((state) => state.post.is_loaded);
+  const commentData = useSelector((state) => state.post.post);
 
-  // comment 가져오기
-  // useEffect(() => {
-  //   const getCommentThunk = async () => {
-  //     const { data } = await axios.get(`/api/comment/${comment_id}`);
-  //     return data;
-  //   };
-  //   getCommentThunk()
-  //     .then((result) => setComment(result))
-  //     .then(() => setIs_loaded(true));
-  // }, []);
+  useEffect(() => {
+    dispatch(getCommentThunk());
+  }, []);
+
+  // const inputCommentHandler = (e) => {
+  //   const { comment, value } = e.target;
+  //   setAddComment({
+  //     ...addComment,
+  //     [comment]: value,
+  //   });
+  // };
+
+  const onSubmitHandler = () => {
+    console.log('작성하기');
+    if (addComment === '') {
+      alert('댓글을 작성해주세요!!');
+    } else {
+      dispatch(addCommentThunk({ postId: '1', comment: comment })); //변수 상태로 보내야함
+      setComment(initialState);
+      alert('정상적으로 댓글이 등록 되었습니다.');
+    }
+  };
 
   return (
     <Fragment>
       <Header />
-      <Button
-        type={'submit'}
-        text={'SIGN IN'}
-        style={{
-          width: '200px',
-          height: '50px',
-          ft_size: '20px',
-          color: '#202020',
-        }}
-      />
       <DetailBox>
         <DetailTitle>
-          <span>Title</span>
+          <span>{comment.title}</span>
         </DetailTitle>
         <DetailStar>
-          <span>Star</span>
+          <Star rating={5} setRating={5}></Star>
         </DetailStar>
         <DetailContent>
-          <span>Content</span>
+          <span>{comment.content}</span>
         </DetailContent>
-        <DetailImage>
-          <span>Image</span>
-        </DetailImage>
-
+        <DetailImage imgUrl={comment.imgUrl}></DetailImage>
         <DetailCommentBox>
-          <h3>Comments</h3>
-          {/* {is_loaded && (
-
-          )} */}
           <DetailCommentHeader>
+            <DetailCommentComments>Comments</DetailCommentComments>
             <DetailCommentInput
-              className="comments-header-textarea"
-              maxRows={3}
-              onChange={(e) => {
-                setComment(e.target.value);
-              }}
-              multiline
-              placeholder="댓글을 입력해주세요"
+              type="text"
+              // value={comment}
+              // onChange={(e) => setComment(e.target.value)}
+              placeholder="댓글을 입력하세요.(20자 이내)"
+              maxLength={20}
+              required
             />
-            {/* {comment !== '' ? (
-              <Button variant="outlined" onClick={submit}>
-                등록하기
-              </Button>
-            ) : (
-              <Button variant="outlined" disabled={true}>
-                등록하기
-              </Button>
-            )} */}
+            <CommentBoxButton>
+              <Button
+                _onClick={() => {
+                  onSubmitHandler();
+                }}
+                // type={'submit'}
+                text={'작성하기'}
+                style={{
+                  width: '80px',
+                  height: '50px',
+                  bg_color: '#FF8EB2',
+                }}
+              />
+            </CommentBoxButton>
           </DetailCommentHeader>
           <DetailCommentGroup>
             <DetailCommentGroupInput>
-              <DetailCommentStatus>
-                {/* {is_loaded ? (
-                  <div>{commentData.map((com) => console.log(com))}</div>
-                ) : (
-                  <div>댓글 로딩중</div>
-                )} */}
-              </DetailCommentStatus>
-              <DetailCommentLikes>좋아요 아이콘</DetailCommentLikes>
-              <DetailSubCommentButton>대댓글 작성버튼</DetailSubCommentButton>
+              <DetailCommentStatusBox>
+                <DetailCommentStatus>
+                  <h2>{comment.comment}</h2>
+                </DetailCommentStatus>
+                <DetailCommentEditButton
+                // onClick={onEditHandler}
+                >
+                  수정
+                </DetailCommentEditButton>
+                <DetailCommentDeleteButton
+                  onClick={() => {
+                    dispatch(deleteCommentThunk(comment.id));
+                  }}
+                >
+                  삭제
+                </DetailCommentDeleteButton>
+              </DetailCommentStatusBox>
+              <DetailCommentLikes>
+                <LikeButton>{AiFillLike}</LikeButton>
+              </DetailCommentLikes>
+              <DetailCommentCreatedAt>
+                작성일: {comment.createdAt}
+              </DetailCommentCreatedAt>
+              {/* <DetailSubCommentButton>댓글작성</DetailSubCommentButton> */}
             </DetailCommentGroupInput>
-            <DetailSubCommentInput>대댓글</DetailSubCommentInput>
-            <DetailSubCommentInput>대댓글</DetailSubCommentInput>
+            {/* <DetailSubCommentInput>
+              {comment.subComment.comment}
+            </DetailSubCommentInput>
+            <DetailSubCommentInput>
+              {comment.subComment.comment}
+            </DetailSubCommentInput> */}
           </DetailCommentGroup>
         </DetailCommentBox>
       </DetailBox>
+      <ButtonBox>
+        <Button
+          _onClick={() => navigate('/write')}
+          type={'button'}
+          style={{
+            width: '200px',
+            height: '50px',
+            color: 'white',
+            bg_color: '#ff8eb2',
+          }}
+          text={'수정하기'}
+        />
+        <Button
+          _onClick={() => navigate('/write')}
+          type={'button'}
+          style={{
+            width: '200px',
+            height: '50px',
+            color: 'white',
+            bg_color: '#ff8eb2',
+          }}
+          text={'삭제하기'}
+        />
+      </ButtonBox>
       <Footer />
     </Fragment>
   );
 };
-export default Detail;
 
-// 중복체크 no button
-// 이미지 드래그앤 드랍
-// 대댓글
-// 그리드 레이아웃
+export default Detail;

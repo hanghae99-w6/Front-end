@@ -32,6 +32,7 @@ export const DramaBox = styled.div`
     background-color: #202020;
   }
 `;
+
 export const ButtonBox = styled.div`
   position: absolute;
   width: 1200px;
