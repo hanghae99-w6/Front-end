@@ -5,7 +5,6 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { api } from '../../shared/api';
 
 // Redux Thunk 구현 부분
-// ADD
 export const addCommentThunk = createAsyncThunk(
   'comment/addComment',
   async (payload, thunkAPI) => {
