@@ -13,11 +13,13 @@ export const DetailSubCommentInput = styled.div`
   font-size: 16px;
   line-height: 125%;
   padding: 12px;
-  top: 45%;
+  top: 50%;
   left: 30px;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
   border: 1px solid pink;
   outline: none;
+  color:black;
+  background-color: wh;
 `;
