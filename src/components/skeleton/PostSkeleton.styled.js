@@ -18,14 +18,14 @@ export const Large = styled.div`
   width: 290px;
   box-sizing: border-box;
   background-color: grey;
-  -webkit-animation: ${boxFade} 2s infinite ease-in-out;
-  animation: ${boxFade} 2s infinite ease-in-out;
+  -webkit-animation: ${boxFade} 5s infinite ease-in-out;
+  animation: ${boxFade} 5s infinite ease-in-out;
 `;
 export const Small = styled.div`
   grid-row-end: span 10;
   width: 290px;
   box-sizing: border-box;
   background-color: grey;
-  -webkit-animation: ${boxFade} 3s infinite ease-in-out;
-  animation: ${boxFade} 3s infinite ease-in-out;
+  -webkit-animation: ${boxFade} 6s infinite ease-in-out;
+  animation: ${boxFade} 6s infinite ease-in-out;
 `;

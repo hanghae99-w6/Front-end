@@ -3,7 +3,7 @@ import { Fragment, useEffect } from 'react';
 
 // Redux import
 import { useDispatch, useSelector } from 'react-redux';
-import { getPostThunk } from '../../redux/modules/post';
+import { getEntertainPostThunk, userLikePostThunk } from '../../redux/modules/post';
 
 // Package import
 import { useNavigate } from 'react-router-dom';
@@ -23,12 +23,26 @@ const Entertain = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const is_loaded = useSelector((state) => state.post.is_loaded);
-  const postData = useSelector((state) => state.post.post);
+  const is_loaded = useSelector((state) => state.post.entertain_is_loaded);
+  const postData = useSelector((state) => state.post.entertain_post);
 
   useEffect(() => {
-    dispatch(getPostThunk());
+    dispatch(getEntertainPostThunk());
+    dispatch(userLikePostThunk());
   }, []);
+
+  const onPostEntertain = () => {
+    try {
+      if (window.sessionStorage.getItem('authorization') === null) {
+        alert('로그인 후에 이용 바랍니다.');
+        navigate('/signin');
+      } else {
+        navigate('/write/entertain');
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   return (
     <Fragment>
@@ -69,7 +83,7 @@ const Entertain = () => {
       </EntertainBox>
       <ButtonBox>
         <Button
-          _onClick={() => navigate('/write/entertain')}
+          _onClick={onPostEntertain}
           type={'button'}
           style={{
             width: '200px',

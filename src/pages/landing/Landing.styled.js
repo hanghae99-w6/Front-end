@@ -19,7 +19,7 @@ export const LandingText = styled.div`
   text-align: center;
   position: absolute;
   background-position: center;
-  width: 500px;
+  width: 600px;
   height: 30px;
   left: 50%;
   top: 106%;

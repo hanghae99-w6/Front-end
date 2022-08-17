@@ -3,7 +3,7 @@ import { Fragment, useEffect } from 'react';
 
 // Redux import
 import { useDispatch, useSelector } from 'react-redux';
-import { getPostThunk } from '../../redux/modules/post';
+import { getDramaPostThunk, userLikePostThunk } from '../../redux/modules/post';
 
 // Package import
 import { useNavigate } from 'react-router-dom';
@@ -23,12 +23,26 @@ const Drama = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const is_loaded = useSelector((state) => state.post.is_loaded);
-  const postData = useSelector((state) => state.post.post);
+  const is_loaded = useSelector((state) => state.post.drama_is_loaded);
+  const postData = useSelector((state) => state.post.drama_post);
 
   useEffect(() => {
-    dispatch(getPostThunk());
+    dispatch(getDramaPostThunk());
+    dispatch(userLikePostThunk());
   }, []);
+
+  const onPostDrama = () => {
+    try {
+      if (window.sessionStorage.getItem('authorization') === null) {
+        alert('로그인 후에 이용 바랍니다.');
+        navigate('/signin');
+      } else {
+        navigate('/write/drama');
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   return (
     <Fragment>
@@ -69,7 +83,7 @@ const Drama = () => {
       </DramaBox>
       <ButtonBox>
         <Button
-          _onClick={() => navigate('/write/drama')}
+          _onClick={onPostDrama}
           type={'button'}
           style={{
             width: '200px',

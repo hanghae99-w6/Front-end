@@ -3,7 +3,7 @@ import { Fragment, useEffect } from 'react';
 
 // Redux import
 import { useDispatch, useSelector } from 'react-redux';
-import { getPostThunk } from '../../redux/modules/post';
+import { getMoviePostThunk, userLikePostThunk } from '../../redux/modules/post';
 
 // Package import
 import { useNavigate } from 'react-router-dom';
@@ -23,12 +23,26 @@ const Movie = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const is_loaded = useSelector((state) => state.post.is_loaded);
-  const postData = useSelector((state) => state.post.post);
+  const is_loaded = useSelector((state) => state.post.movie_is_loaded);
+  const postData = useSelector((state) => state.post.movie_post);
 
   useEffect(() => {
-    dispatch(getPostThunk());
+    dispatch(getMoviePostThunk());
+    dispatch(userLikePostThunk());
   }, []);
+
+  const onPostMovie = () => {
+    try {
+      if (window.sessionStorage.getItem('authorization') === null) {
+        alert('로그인 후에 이용 바랍니다.');
+        navigate('/signin');
+      } else {
+        navigate('/write/movie');
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   return (
     <Fragment>
@@ -68,7 +82,17 @@ const Movie = () => {
         )}
       </MovieBox>
       <ButtonBox>
-        <Button _onClick={() => navigate('/write/movie')} type={'button'} style={{width: '200px', height: '50px', color: 'white', bg_color: '#ff8eb2'}} text={'포스팅하기'} />
+        <Button
+          _onClick={onPostMovie}
+          type={'button'}
+          style={{
+            width: '200px',
+            height: '50px',
+            color: 'white',
+            bg_color: '#ff8eb2',
+          }}
+          text={'포스팅하기'}
+        />
       </ButtonBox>
       <Footer />
     </Fragment>

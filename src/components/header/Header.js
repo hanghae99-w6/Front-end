@@ -1,9 +1,14 @@
 // React import
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, Fragment } from 'react';
+
+// Redux import
+import { useDispatch, useSelector } from 'react-redux';
+import { headerAction } from '../../redux/modules/member';
 
 // Package import
 import { useNavigate } from 'react-router-dom';
 import { getCookie, removeCookie } from '../../shared/cookie';
+import jwt_decode from 'jwt-decode';
 
 // Component & Element import
 import Button from '../../elements/button/Button';
@@ -20,15 +25,24 @@ import {
 
 const Header = ({ category }) => {
   const [state, setState] = useState(false);
-  const navigate = useNavigate();
 
   const movieRef = useRef();
   const dramaRef = useRef();
   const entertainRef = useRef();
 
+  const nickname = useSelector((state) => state.member.nickname);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   useEffect(() => {
-    if (getCookie('nickname') !== undefined) {
-      setState(true);
+    try {
+      if (window.sessionStorage.getItem('authorization') !== null) {
+        const nickname = jwt_decode(window.sessionStorage.getItem('authorization')).sub;
+        dispatch(headerAction({ nickname, loginStatus: true }));
+        setState(true);
+      }
+    } catch (err) {
+      console.error(err);
     }
 
     if (category) {
@@ -53,9 +67,12 @@ const Header = ({ category }) => {
   }, []);
 
   const signOut = () => {
-    removeCookie('nickname');
+    window.sessionStorage.setItem('authorization', '');
+    window.sessionStorage.setItem('refresh-token', '');
     setState(false);
+    dispatch(headerAction({ nickname: '', loginStatus: false }));
     alert('로그아웃 되었습니다.');
+    navigate('/');
   };
 
   return (
@@ -84,12 +101,10 @@ const Header = ({ category }) => {
         </HeaderBoxCategory>
         <HeaderBoxSign>
           {state ? (
-            <>
-              <HeaderBoxSignUser>
-                {getCookie('nickname').split('@')[0]}
-              </HeaderBoxSignUser>
+            <Fragment>
+              <HeaderBoxSignUser>{nickname}</HeaderBoxSignUser>
               <Button _onClick={signOut} text={'로그아웃'}></Button>
-            </>
+            </Fragment>
           ) : (
             <Button
               _onClick={() => navigate('/signin')}
