@@ -33,20 +33,11 @@ const Header = ({ category }) => {
   const nickname = useSelector((state) => state.member.nickname);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  // try {
-  //   if (document.cookie !== '') {
-  //     const nickname = jwt_decode(document.cookie.split('=')[1]).sub;
-  //     dispatch(headerAction({ nickname, loginStatus: true }));
-  //     setState(true);
-  //   }
-  // } catch (err) {
-  //   console.error(err);
-  // }
 
   useEffect(() => {
     try {
-      if (getCookie('authorization') !== undefined) {
-        const nickname = jwt_decode(getCookie('authorization')).sub;
+      if (window.sessionStorage.getItem('authorization') !== null) {
+        const nickname = jwt_decode(window.sessionStorage.getItem('authorization')).sub;
         dispatch(headerAction({ nickname, loginStatus: true }));
         setState(true);
       }
@@ -76,10 +67,12 @@ const Header = ({ category }) => {
   }, []);
 
   const signOut = () => {
-    removeCookie('authorization');
-    window.localStorage.setItem('refresh-token', '');
+    window.sessionStorage.setItem('authorization', '');
+    window.sessionStorage.setItem('refresh-token', '');
     setState(false);
+    dispatch(headerAction({ nickname: '', loginStatus: false }));
     alert('로그아웃 되었습니다.');
+    navigate('/');
   };
 
   return (

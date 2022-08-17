@@ -3,11 +3,10 @@ import { Fragment, useEffect } from 'react';
 
 // Redux import
 import { useDispatch, useSelector } from 'react-redux';
-import { getEntertainPostThunk } from '../../redux/modules/post';
+import { getEntertainPostThunk, userLikePostThunk } from '../../redux/modules/post';
 
 // Package import
 import { useNavigate } from 'react-router-dom';
-import { getCookie } from '../../shared/cookie';
 
 // Component & Element import
 import Header from '../../components/header/Header';
@@ -29,15 +28,16 @@ const Entertain = () => {
 
   useEffect(() => {
     dispatch(getEntertainPostThunk());
+    dispatch(userLikePostThunk());
   }, []);
 
   const onPostEntertain = () => {
     try {
-      if (getCookie('authorization') === undefined) {
+      if (window.sessionStorage.getItem('authorization') === null) {
         alert('로그인 후에 이용 바랍니다.');
         navigate('/signin');
       } else {
-        navigate('/write/movie');
+        navigate('/write/entertain');
       }
     } catch (err) {
       console.error(err);

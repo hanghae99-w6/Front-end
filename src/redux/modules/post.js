@@ -5,40 +5,34 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { api, api_auth, api_image } from '../../shared/api';
 
 export const getMoviePostThunk = createAsyncThunk(
-  'post/getMoviePost',
+  'get/getMoviePost',
   async (payload, thunkAPI) => {
     const resData = await api
       .get(`/main/movie`)
       .then((res) => res.data)
       .catch((err) => console.err(err));
-
-    console.log(resData);
     return thunkAPI.fulfillWithValue(resData.data);
   }
 );
 
 export const getDramaPostThunk = createAsyncThunk(
-  'post/getDramaPost',
+  'get/getDramaPost',
   async (payload, thunkAPI) => {
     const resData = await api
       .get(`/main/drama`)
       .then((res) => res.data)
       .catch((err) => console.err(err));
-      
-    console.log(resData);
     return thunkAPI.fulfillWithValue(resData.data);
   }
 );
 
 export const getEntertainPostThunk = createAsyncThunk(
-  'post/getPgetDramaPostost',
+  'get/getPgetDramaPostost',
   async (payload, thunkAPI) => {
     const resData = await api
       .get(`/main/entertain`)
       .then((res) => res.data)
       .catch((err) => console.err(err));
-
-    console.log(resData);
     return thunkAPI.fulfillWithValue(resData.data);
   }
 );
@@ -65,8 +59,30 @@ export const addPostThunk = createAsyncThunk(
       .post(`/auth/post`, payload)
       .then((res) => res.data)
       .catch((err) => console.err(err));
-    console.log(resData);
     return thunkAPI.fulfillWithValue(resData.data);
+  }
+);
+
+export const likePostThunk = createAsyncThunk(
+  'post/likePost',
+  async (payload, thunkAPI) => {
+    const resData = await api_auth
+      .post(`/auth/postlikes/${payload.id}`)
+      .then((res) => res.data)
+      .catch((err) => console.err(err));
+
+    return thunkAPI.fulfillWithValue(resData);
+  }
+);
+
+export const userLikePostThunk = createAsyncThunk(
+  'get/userLikePost',
+  async (payload, thunkAPI) => {
+    const resData = await api_auth
+      .get(`/auth/likedpost`)
+      .then((res) => res.data)
+      .catch((err) => console.err(err));
+    return thunkAPI.fulfillWithValue(resData);
   }
 );
 
@@ -78,6 +94,7 @@ const initialState = {
   movie_post: [],
   drama_post: [],
   entertain_post: [],
+  liked_post: []
 };
 
 export const postSlice = createSlice({
@@ -96,6 +113,9 @@ export const postSlice = createSlice({
     builder.addCase(getEntertainPostThunk.fulfilled, (state, action) => {
       state.entertain_is_loaded = true;
       state.entertain_post = action.payload;
+    });
+    builder.addCase(userLikePostThunk.fulfilled, (state, action) => {
+      state.liked_post = action.payload;
     });
   },
 });

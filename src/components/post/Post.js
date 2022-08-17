@@ -1,5 +1,5 @@
 // Package import
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 // Component & Element import
 import Button from '../../elements/button/Button';
@@ -20,7 +20,7 @@ const Post = ({ id, title, content, likes, createdAt, modifiedAt }) => {
     <PostBox>
       <PostBoxText>{content}</PostBoxText>
       <PostBoxButtonGroup>
-        <Like likes={likes} />
+        <Like id={id} likes={likes} />
         <Button
           type={'button'}
           _onClick={() => navigate(`/detail/${id}`)}
@@ -28,7 +28,7 @@ const Post = ({ id, title, content, likes, createdAt, modifiedAt }) => {
           style={{ width: '170px', height: '40px', bg_color: '#fcd1df' }}
         />
       </PostBoxButtonGroup>
-      <PostBoxCreatedDate>작성일: {createdAt}</PostBoxCreatedDate>
+      <PostBoxCreatedDate>작성일: {createdAt.split('T')[0]}</PostBoxCreatedDate>
     </PostBox>
   );
 };

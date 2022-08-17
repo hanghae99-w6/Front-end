@@ -1,18 +1,14 @@
 import axios from 'axios';
-import { getCookie } from './cookie';
 
 const SERVER_IP = process.env.REACT_APP_REST_IP_ADDR;
-
-const accessToken = getCookie('authorization');
-const refreshToken = window.localStorage.getItem('refresh-token');
 
 export const api_auth = axios.create({
   baseURL: `http://${SERVER_IP}`,
   headers: {
     'content-type': 'application/json;charset=UTF-8',
-    accept: 'application/json,',
-    'refresh-token': `${refreshToken}`,
-    authorization: `Bearer ${accessToken}`,
+    'accept': 'application/json,',
+    'refresh-token': `${window.sessionStorage.getItem('refresh-token')}`,
+    'authorization': `Bearer ${window.sessionStorage.getItem('authorization')}`,
   },
 });
 

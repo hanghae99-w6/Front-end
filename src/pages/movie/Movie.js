@@ -3,11 +3,10 @@ import { Fragment, useEffect } from 'react';
 
 // Redux import
 import { useDispatch, useSelector } from 'react-redux';
-import { getMoviePostThunk } from '../../redux/modules/post';
+import { getMoviePostThunk, userLikePostThunk } from '../../redux/modules/post';
 
 // Package import
 import { useNavigate } from 'react-router-dom';
-import { getCookie } from '../../shared/cookie';
 
 // Component & Element import
 import Header from '../../components/header/Header';
@@ -29,11 +28,12 @@ const Movie = () => {
 
   useEffect(() => {
     dispatch(getMoviePostThunk());
+    dispatch(userLikePostThunk());
   }, []);
 
   const onPostMovie = () => {
     try {
-      if (getCookie('authorization') === undefined) {
+      if (window.sessionStorage.getItem('authorization') === null) {
         alert('로그인 후에 이용 바랍니다.');
         navigate('/signin');
       } else {

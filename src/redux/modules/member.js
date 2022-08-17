@@ -2,7 +2,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 // Package import
-import { setCookie } from '../../shared/cookie';
 import { api } from '../../shared/api';
 
 // Redux Thunk 구현 부분
@@ -45,11 +44,15 @@ export const signMemberThunk = createAsyncThunk(
       .post(`http://3.37.127.16:8080/members/login`, payload)
       .then((res) => res)
       .catch((err) => console.err(err));
-    setCookie('authorization', resData.headers['authorization'].split(' ')[1]);
-    window.localStorage.setItem(
+    window.sessionStorage.setItem(
+      'authorization',
+      resData.headers['authorization'].split(' ')[1]
+    );
+    window.sessionStorage.setItem(
       'refresh-token',
       resData.headers['refresh-token']
     );
+
     return thunkAPI.fulfillWithValue(resData.data.success);
   }
 );
@@ -57,12 +60,15 @@ export const signMemberThunk = createAsyncThunk(
 export const kakaoAuthThunk = createAsyncThunk(
   'member/kakaoLogin',
   async (payload, thunkAPI) => {
-    console.log(payload);
     const resData = await api
       .get(`/members/kakao/callback?code=${payload.code}`)
       .then((res) => res);
-    setCookie('authorization', resData.headers['authorization'].split(' ')[1]);
-    window.localStorage.setItem(
+    // setCookie('authorization', resData.headers['authorization'].split(' ')[1]);
+    window.sessionStorage.setItem(
+      'authorization',
+      resData.headers['authorization'].split(' ')[1]
+    );
+    window.sessionStorage.setItem(
       'refresh-token',
       resData.headers['refresh-token']
     );
@@ -89,7 +95,7 @@ export const memberSlice = createSlice({
     headerAction: (state, action) => {
       state.nickname = action.payload.nickname;
       state.loginStatus = action.payload.loginStatus;
-    }
+    },
   },
   extraReducers: (builder) => {},
 });
