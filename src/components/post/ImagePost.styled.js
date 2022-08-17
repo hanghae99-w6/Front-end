@@ -5,7 +5,6 @@ export const ImagePostBox = styled.div`
   width: 290px;
   backdrop-filter: blur(5px);
   background: rgba(255, 255, 255, 0.35);
-  -webkit-backdrop-filter: blur(7px);
   border: 1px solid rgba(255, 255, 255, 0.18);
   box-sizing: border-box;
   display: flex;
@@ -54,5 +53,5 @@ export const PostBoxCreatedDate = styled.div`
   height: 5.5%;
   text-align: right;
   font-size: 12px;
-  color: #202020;
+  color: white;
 `;

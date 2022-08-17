@@ -33,7 +33,7 @@ import {
 
 const SignIn = () => {
   const REST_API_KEY = process.env.REACT_APP_KAKAO_REST_API_KEY;
-  const REDIRECT_URI = 'http://localhost:3000/kakao';
+  const REDIRECT_URI = 'http://localhost:3000/kakao/callback';
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -66,7 +66,6 @@ const SignIn = () => {
   const signInAccount = useCallback(
     async (event) => {
       event.preventDefault();
-      console.log(email);
       dispatch(signMemberThunk({ loginId: email, password })).then((res) => {
         if (email === '') {
           emailRef.current.innerText = '계정을 입력해주세요';
@@ -138,7 +137,7 @@ const SignIn = () => {
               }}
             />
             <Button
-              type={'submit'}
+              type={'button'}
               text={'KAKAO SIGN IN'}
               _onClick={() => {
                 window.location.href = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;

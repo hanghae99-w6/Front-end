@@ -110,6 +110,7 @@ const SignUp = () => {
       emailRef.current.style.color = '';
     }
   }, [email]);
+
   useEffect(() => {
     if (nickname !== '') {
       checkNickNameId(nickname);
@@ -148,10 +149,12 @@ const SignUp = () => {
           nickNameRef.current.innerText = '사용가능한 닉네임입니다';
           nickNameRef.current.style.color = '#0fe05f';
           setNickNameCheck(true);
+          console.log(nicknameCheck);
         } else {
           nickNameRef.current.innerText = '중복되는 닉네임입니다';
           nickNameRef.current.style.color = '#f2153e';
           setNickNameCheck(false);
+          console.log(nicknameCheck);
         }
       });
     }, 500),
@@ -216,14 +219,15 @@ const SignUp = () => {
 
   const signUpAccount = useCallback((event) => {
     event.preventDefault();
+    console.log(emailCheck, nicknameCheck);
     if (emailCheck === false) {
       emailRef.current.focus();
-      emailRef.current.style.color = 'white';
+      emailRef.current.style.color = '#f2153e';
       emailRef.current.innerText = '중복되는 이메일입니다';
     } else if (nicknameCheck === false) {
       nickNameRef.current.focus();
-      nickNameRef.current.style.color = 'white';
-      nickNameRef.current.innerText = '중복되는 이메일입니다';
+      nickNameRef.current.style.color = '#f2153e';
+      nickNameRef.current.innerText = '중복되는 닉네임입니다';
     } else {
       if (strengthBarRef.current.state.score <= 2) {
         passwordRef.current.focus();
@@ -236,13 +240,12 @@ const SignUp = () => {
         rePasswordSpanRef.current.focus();
         rePasswordSpanRef.current.innerText = '입력한 비밀번호와 다릅니다';
       } else {
-        console.log(newMember);
         dispatch(addMemberThunk(newMember));
         alert('Watchao의 멤버가 되신것을 축하드립니다!🎉');
         navigate('/signin');
       }
     }
-  }, []);
+  }, [email, nickname, password, repassword]);
 
   return (
     <Fragment>
