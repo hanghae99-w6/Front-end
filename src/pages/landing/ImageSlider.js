@@ -9,6 +9,9 @@ import 'swiper/css/navigation';
 import 'swiper/css/autoplay';
 import './ImageSlider.css';
 
+// Import Image
+import { nope } from '../../static/image/image.js';
+
 // import required modules
 import { EffectCoverflow, Pagination, Autoplay } from 'swiper';
 export default function ImageSlider() {
@@ -20,7 +23,7 @@ export default function ImageSlider() {
         grabCursor={true}
         centeredSlides={true}
         slidesPerView={'auto'}
-        slideToClickedSlide= {true}
+        slideToClickedSlide={true}
         coverflowEffect={{
           rotate: 0,
           stretch: 100,
@@ -40,7 +43,7 @@ export default function ImageSlider() {
         className="mySwiper"
       >
         <SwiperSlide>
-          <img src="https://w.namu.la/s/c89ca9f7e1a0524447d6d31629f031d7344b6266a6ebcbc89eaabdb48d31ac9c61df2953b2e7c15a84a52ae5a1934efb91dcd7925c42ce9d64cbcab1a437bdc1c27f9b67234ba627fe5899d13aa369d0277ded7e88dd4c3b6c3e74152bafe24a1d6d553003a9dce61be2ace88c594564" />
+          <img src={nope} />
         </SwiperSlide>
         <SwiperSlide>
           <img src="https://w.namu.la/s/4435962b2e93f4e284bb36a412158061bba6363c41fab8033c7ec0198d2caa75fe4d0a84460ddfc49d9b90ecc30f5e218d0e04ba3dfdac3cdc18e2902d60ccc16f549f49cb5a569dea7e4b9243c14c69f698df7af134e7ac57aabf8347a6bbed" />
