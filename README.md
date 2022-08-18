@@ -54,6 +54,11 @@
 <br>
 
 ## ✨ 핵심 기능<br>
+<details>
+<summary>여기를 눌러주세요</summary>
+<div markdown="1">
+
+<br>
 
 ### # 공통 기능
 - Input 상태 관리하기 : useRef를 이용하여 input창을 초기화할 수 있습니다. 
@@ -78,6 +83,9 @@
 #### 4. 상세페이지
 - 댓글 CRUD 기능 구현
 - 특정 포스트에 상세보기 클릭 시 댓글 리스트를 확인할 수 있습니다.
+
+</div>
+</details>
 
 <br>
 
