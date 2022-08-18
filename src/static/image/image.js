@@ -1,12 +1,12 @@
 import logoHeader from './logoHeader.png';
 import logoFooter from './logoFooter.png';
-import drama_1 from './landing/drama_1';
-import drama_2 from './landing/drama_2';
-import entertain_8 from './landing/entertain_8';
-import entertain_9 from './landing/drentertain_9ama_1';
-import entertain_10 from './landing/entertain_10';
-import movie_20 from './landing/movie_20';
-import movie_21 from './landing/movie_21';
+import drama_1 from './landing/drama_1.png';
+import drama_2 from './landing/drama_2.jpg';
+import entertain_8 from './landing/entertain_8.jpg';
+import entertain_9 from './landing/entertain_9.jpg';
+import entertain_10 from './landing/entertain_10.jpg';
+import movie_20 from './landing/movie_20.jpg';
+import movie_21 from './landing/movie_21.jpg';
 
 export {
   logoHeader,
