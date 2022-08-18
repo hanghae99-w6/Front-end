@@ -37,6 +37,22 @@ export const getEntertainPostThunk = createAsyncThunk(
   }
 );
 
+export const getSinglePostThunk = createAsyncThunk(
+  'get/getSinglePost',
+  async (payload, thunkAPI) => {
+    const headers = {
+      authorization: `Bearer ${window.localStorage.getItem('authorization')}`,
+      'refresh-token': `${window.localStorage.getItem('refresh-token')}`,
+    };
+
+    const resData = await api_auth
+      .get(`/post/${payload}`, { headers })
+      .then((res) => res.data.data)
+      .catch((err) => console.err(err));
+    return thunkAPI.fulfillWithValue(resData);
+  }
+);
+
 export const uploadImageThunk = createAsyncThunk(
   'post/uploadImage',
   async (payload, thunkAPI) => {
@@ -55,8 +71,12 @@ export const uploadImageThunk = createAsyncThunk(
 export const addPostThunk = createAsyncThunk(
   'post/addPost',
   async (payload, thunkAPI) => {
+    const headers = {
+      authorization: `Bearer ${window.localStorage.getItem('authorization')}`,
+      'refresh-token': `${window.localStorage.getItem('refresh-token')}`,
+    };
     const resData = await api_auth
-      .post(`/auth/post`, payload)
+      .post(`/auth/post`, payload, { headers })
       .then((res) => res.data)
       .catch((err) => console.err(err));
     return thunkAPI.fulfillWithValue(resData.data);
@@ -66,11 +86,14 @@ export const addPostThunk = createAsyncThunk(
 export const likePostThunk = createAsyncThunk(
   'post/likePost',
   async (payload, thunkAPI) => {
+    const headers = {
+      authorization: `Bearer ${window.localStorage.getItem('authorization')}`,
+      'refresh-token': `${window.localStorage.getItem('refresh-token')}`,
+    };
     const resData = await api_auth
-      .post(`/auth/postlikes/${payload.id}`)
+      .post(`/auth/postlikes/${payload.id}`, {}, { headers })
       .then((res) => res.data)
       .catch((err) => console.err(err));
-
     return thunkAPI.fulfillWithValue(resData);
   }
 );
@@ -78,10 +101,34 @@ export const likePostThunk = createAsyncThunk(
 export const userLikePostThunk = createAsyncThunk(
   'get/userLikePost',
   async (payload, thunkAPI) => {
+    const headers = {
+      authorization: `Bearer ${window.localStorage.getItem('authorization')}`,
+      'refresh-token': `${window.localStorage.getItem('refresh-token')}`,
+    };
+
     const resData = await api_auth
-      .get(`/auth/likedpost`)
+      .get(`/auth/likedpost`, { headers })
       .then((res) => res.data)
       .catch((err) => console.err(err));
+    return thunkAPI.fulfillWithValue(resData);
+  }
+);
+
+export const deletePostThunk = createAsyncThunk(
+  'get/deletePost',
+  async (payload, thunkAPI) => {
+    const headers = {
+      authorization: `Bearer ${window.localStorage.getItem('authorization')}`,
+      'refresh-token': `${window.localStorage.getItem('refresh-token')}`,
+    };
+
+    const resData = await api_auth
+      .delete(`/auth/post/${payload}`, { headers })
+      .then((res) => res.data)
+      .catch((err) => {
+        alert('본인 포스팅만 삭제가 가능합니다.');
+        console.err(err);
+      });
     return thunkAPI.fulfillWithValue(resData);
   }
 );
@@ -94,7 +141,8 @@ const initialState = {
   movie_post: [],
   drama_post: [],
   entertain_post: [],
-  liked_post: []
+  liked_post: [],
+  single_post: [],
 };
 
 export const postSlice = createSlice({
@@ -116,6 +164,10 @@ export const postSlice = createSlice({
     });
     builder.addCase(userLikePostThunk.fulfilled, (state, action) => {
       state.liked_post = action.payload;
+    });
+    builder.addCase(getSinglePostThunk.fulfilled, (state, action) => {
+      state.detail_is_loaded = true;
+      state.single_post = action.payload;
     });
   },
 });

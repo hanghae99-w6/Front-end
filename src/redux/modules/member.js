@@ -44,11 +44,11 @@ export const signMemberThunk = createAsyncThunk(
       .post(`http://3.37.127.16:8080/members/login`, payload)
       .then((res) => res)
       .catch((err) => console.err(err));
-    window.sessionStorage.setItem(
+    window.localStorage.setItem(
       'authorization',
       resData.headers['authorization'].split(' ')[1]
     );
-    window.sessionStorage.setItem(
+    window.localStorage.setItem(
       'refresh-token',
       resData.headers['refresh-token']
     );
@@ -63,12 +63,11 @@ export const kakaoAuthThunk = createAsyncThunk(
     const resData = await api
       .get(`/members/kakao/callback?code=${payload.code}`)
       .then((res) => res);
-    // setCookie('authorization', resData.headers['authorization'].split(' ')[1]);
-    window.sessionStorage.setItem(
+    window.localStorage.setItem(
       'authorization',
       resData.headers['authorization'].split(' ')[1]
     );
-    window.sessionStorage.setItem(
+    window.localStorage.setItem(
       'refresh-token',
       resData.headers['refresh-token']
     );

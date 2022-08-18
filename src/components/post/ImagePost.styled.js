@@ -37,6 +37,7 @@ export const PostBoxImageText = styled.div`
   box-sizing: border-box;
   background-color: #000000;
   opacity: 0;
+  word-break: break-all;
 `;
 export const PostBoxButtonGroup = styled.div`
   box-sizing: border-box;

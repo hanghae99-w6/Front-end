@@ -2,17 +2,22 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 // Axios import
-import { api } from '../../shared/api';
+import { api, api_auth } from '../../shared/api';
 
 // Redux Thunk 구현 부분
 export const addCommentThunk = createAsyncThunk(
   'comment/addComment',
   async (payload, thunkAPI) => {
-    const resData = await api
-      .post(`http://localhost:5001/auth/comment`, payload) //첫번째 인자, 두번째 인자
+    const headers = {
+      authorization: `Bearer ${window.localStorage.getItem('authorization')}`,
+      'refresh-token': `${window.localStorage.getItem('refresh-token')}`,
+    };
+
+    const resData = await api_auth
+      .post(`/auth/comment`, payload, { headers })
       .then((res) => res.data)
       .catch((err) => console.err(err));
-    return thunkAPI.fulfillWithValue({ resData });
+    return thunkAPI.fulfillWithValue(resData);
   }
 );
 
@@ -21,11 +26,11 @@ export const getCommentThunk = createAsyncThunk(
   'comment/getComment',
   async (payload, thunkAPI) => {
     const resData = await api
-      .get(`http://localhost:5001/post/${payload}`)
+      .get(`/comment/${payload}`)
       .then((res) => res.data)
       .catch((err) => console.err(err));
 
-    return thunkAPI.fulfillWithValue({ resData });
+    return thunkAPI.fulfillWithValue(resData);
   }
 );
 
@@ -33,18 +38,25 @@ export const getCommentThunk = createAsyncThunk(
 export const deleteCommentThunk = createAsyncThunk(
   'comment/deleteComment',
   async (payload, thunkAPI) => {
-    const resData = await api
-      .delete(`http://localhost:5001/comment/${payload}`)
-      .then((res) => res.data)
-      .catch((err) => console.err(err));
+    const headers = {
+      authorization: `Bearer ${window.localStorage.getItem('authorization')}`,
+      'refresh-token': `${window.localStorage.getItem('refresh-token')}`,
+    };
 
-    return thunkAPI.fulfillWithValue({ resData });
+    const resData = await api_auth
+      .delete(`/auth/comment/${payload}`, { headers })
+      .then((res) => res.data)
+      .catch((err) => {
+        alert('본인 댓글만 삭제가 가능합니다.');
+        console.err(err);
+      });
+    return thunkAPI.fulfillWithValue({ resData, id: payload });
   }
 );
 
 // Comment 초기 상태 값
 const initialState = {
-  is_loaded: true,
+  is_loaded: false,
   comment: [],
 };
 
@@ -55,13 +67,19 @@ export const commentSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(getCommentThunk.fulfilled, (state, action) => {
-      state.is_loaded = false;
-      const newState = state.comment.filter(
-        (com) => com.id !== action.payload.id
-      );
-
-      // 상태 변화 코드 작성
-      state.comment = newState.push(action.payload);
+      state.is_loaded = true;
+      state.comment = action.payload.data;
+    });
+    builder.addCase(addCommentThunk.fulfilled, (state, action) => {
+      state.comment = [...state.comment, action.payload.data];
+    });
+    builder.addCase(deleteCommentThunk.fulfilled, (state, action) => {
+      state.comment = state.comment.map((com) => {
+        if (com.id === action.payload.id) {
+          com.comment = '삭제된 댓글입니다.';
+        }
+        return com;
+      });
     });
   },
 });

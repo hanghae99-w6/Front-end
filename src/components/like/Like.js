@@ -1,9 +1,14 @@
 // React import
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 
 // Redux import
 import { useDispatch, useSelector } from 'react-redux';
-import { getMoviePostThunk, getDramaPostThunk, getEntertainPostThunk, likePostThunk } from '../../redux/modules/post';
+import {
+  getMoviePostThunk,
+  getDramaPostThunk,
+  getEntertainPostThunk,
+  likePostThunk,
+} from '../../redux/modules/post';
 
 // Package import
 import { AiFillLike } from 'react-icons/ai';
@@ -23,13 +28,13 @@ const Like = ({ id, likes }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    setColor(liked_post.includes(id));
-  });
-
   const manageLikes = () => {
     try {
-      if (window.sessionStorage.getItem('authorization') === null) {
+      if (
+        window.localStorage.getItem('authorization') === '' ||
+        window.localStorage.getItem('authorization') === undefined ||
+        window.localStorage.getItem('authorization') === null
+      ) {
         alert('로그인 후에 이용 바랍니다.');
         navigate('/signin');
       } else {
@@ -54,7 +59,12 @@ const Like = ({ id, likes }) => {
   };
 
   return (
-    <LikeButton color={color} type="button" onClick={manageLikes} ref={iconRef}>
+    <LikeButton
+      color={liked_post.includes(id) ? 'lightpink' : 'white'}
+      type="button"
+      onClick={manageLikes}
+      ref={iconRef}
+    >
       <AiFillLike /> {count}
     </LikeButton>
   );

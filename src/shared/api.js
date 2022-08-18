@@ -6,9 +6,7 @@ export const api_auth = axios.create({
   baseURL: `http://${SERVER_IP}`,
   headers: {
     'content-type': 'application/json;charset=UTF-8',
-    'accept': 'application/json,',
-    'refresh-token': `${window.sessionStorage.getItem('refresh-token')}`,
-    'authorization': `Bearer ${window.sessionStorage.getItem('authorization')}`,
+    accept: 'application/json,',
   },
 });
 
