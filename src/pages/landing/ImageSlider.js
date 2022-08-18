@@ -10,7 +10,15 @@ import 'swiper/css/autoplay';
 import './ImageSlider.css';
 
 // Import Image
-import { nope } from '../../static/image/image.js';
+import {
+  drama_1,
+  drama_2,
+  entertain_8,
+  entertain_9,
+  entertain_10,
+  movie_20,
+  movie_21,
+} from '../../static/image/image.js';
 
 // import required modules
 import { EffectCoverflow, Pagination, Autoplay } from 'swiper';
@@ -43,25 +51,25 @@ export default function ImageSlider() {
         className="mySwiper"
       >
         <SwiperSlide>
-          <img src={nope} />
+          <img src={drama_1} />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://w.namu.la/s/4435962b2e93f4e284bb36a412158061bba6363c41fab8033c7ec0198d2caa75fe4d0a84460ddfc49d9b90ecc30f5e218d0e04ba3dfdac3cdc18e2902d60ccc16f549f49cb5a569dea7e4b9243c14c69f698df7af134e7ac57aabf8347a6bbed" />
+          <img src={drama_2} />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://w.namu.la/s/ecd37aaec5da564534059c34b264ddc11730adc67d05b22ae985f6eb34af6416e152c2f9cf7596ec63385255896d1c75ab30244a8b91d03abe084426777ce7dd5ed333f326341c36822b7ee5d9c2183e1ef7dde10c6327308a60018fec749b1130ec47af5f4beff348e493506aed41ab" />
+          <img src={entertain_8} />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://w.namu.la/s/6f22a2b043766ba36420a60d95bb6e19d53b0e0bcaa3f103d8537c92e6aea963e6787d15d6c9ff82af45412bbff9fe83bda6822813b9f32db1d594dc4b9b87f72033112d80e477f88c3ba6c5d1868d14b61c18f15c0dcee29439de289a9cb94991b5c0992389802a45230c2e29846568" />
+          <img src={entertain_9} />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://w.namu.la/s/d2f614202c59d80306a583388dcd67eaeed59c6bc09049b999972529426c3b34c22127891c5c0376bc1ae84b7a1c641da5978bf5b4c1b85d5ba69acfe8b5b8f2811df85b650d07123ed2bf0e92fadfd0bb305c3a5fec6b8347aee1b5b6157a12d77e79a184b39dd966631d3d4c68475c" />
+          <img src={entertain_10} />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://image.news1.kr/system/photos/2018/11/22/3401642/article.jpg/dims/optimize" />
+          <img src={movie_20} />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://i.namu.news/file/namunews/5d/5d72b778a7b5d6768f4522af14d1c73159640bbcbc2fc9e1e9af4970bbfec3ba.jpg" />
+          <img src={movie_21} />
         </SwiperSlide>
       </Swiper>
     </>
