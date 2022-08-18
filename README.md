@@ -40,17 +40,18 @@ https://www.youtube.com/watch?v=ZsBUIcwq1Jo
 
 ## WATCHAO!
 부분 반응형으로 설계하여 해상도 1920 x 1080 에서 화면이 깨지지 않고 작동합니다.
-랜딩페이지 | 로그인페이지 | 회원가입페이지
----|---|---|
-![1](https://user-images.githubusercontent.com/109033607/185373925-2b4cb14c-ef40-4aa2-af7e-62a911b3050e.gif)|![signin (1)](https://user-images.githubusercontent.com/109033607/185381014-cbcac032-7596-4960-bdc8-5335633efc74.gif)|![signin](https://user-images.githubusercontent.com/109033607/185379009-2ebe9703-234b-4d6c-9911-bb380e213ded.gif)
-영화페이지 | 드라마페이지 | 예능페이지
-gif|gif|gif
-Skeleton | 상세페이지 | 소셜로그인
-![skeleton](https://user-images.githubusercontent.com/109033607/185400797-b69f8c66-0e4a-46e1-b454-40fb823591f5.gif)|![detail](https://user-images.githubusercontent.com/109033607/185377409-ee00f24e-17b8-4f9f-8371-a6eeefc6a3ba.gif)|![kakao1](https://user-images.githubusercontent.com/109033607/185375564-89df8ba9-3fed-4a9e-9844-d50624af1e3e.gif)
 
 <br>
 
+**랜딩페이지**|**로그인페이지**|**회원가입페이지**
+:--------:|:--------:|:--------:|
+![1](https://user-images.githubusercontent.com/109033607/185373925-2b4cb14c-ef40-4aa2-af7e-62a911b3050e.gif)|![signin (1)](https://user-images.githubusercontent.com/109033607/185381014-cbcac032-7596-4960-bdc8-5335633efc74.gif)|![signin](https://user-images.githubusercontent.com/109033607/185379009-2ebe9703-234b-4d6c-9911-bb380e213ded.gif)
+**영화페이지**|**드라마페이지**|**예능페이지**
+![movie](https://user-images.githubusercontent.com/109033607/185410980-ed3dd1e0-a6dc-4754-aaa0-40237b82fcf3.gif)|![drama(last)](https://user-images.githubusercontent.com/109033607/185412749-a3d56bcb-1438-4a3f-b3be-30867baf2074.gif)|![enter_last_](https://user-images.githubusercontent.com/109033607/185411076-072a1938-ce8c-4b0e-914f-1514a6006e77.gif)
+**Skeleton**|**상세페이지**|**소셜로그인**
+![skeleton](https://user-images.githubusercontent.com/109033607/185400797-b69f8c66-0e4a-46e1-b454-40fb823591f5.gif)|![detail](https://user-images.githubusercontent.com/109033607/185377409-ee00f24e-17b8-4f9f-8371-a6eeefc6a3ba.gif)|![kakao1](https://user-images.githubusercontent.com/109033607/185375564-89df8ba9-3fed-4a9e-9844-d50624af1e3e.gif)
 
+<br>
 
 ## 😎 프론트엔드 팀원 소개<br>
 이름 | 깃허브 주소 |
