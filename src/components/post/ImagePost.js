@@ -1,4 +1,5 @@
 // Component & Element import
+import { useNavigate } from 'react-router-dom';
 import Button from '../../elements/button/Button';
 import Like from '../like/Like';
 
@@ -20,6 +21,8 @@ const ImagePost = ({
   createdAt,
   modifiedAt,
 }) => {
+  const navigate = useNavigate();
+
   return (
     <ImagePostBox>
       <PostBoxImage imgUrl={imgUrl}>
@@ -29,6 +32,7 @@ const ImagePost = ({
         <Like id={id} likes={likes} />
         <Button
           type={'button'}
+          _onClick={() => navigate(`/detail/${id}`)}
           text={'상세보기'}
           style={{ width: '170px', height: '40px', bg_color: '#fcd1df' }}
         />

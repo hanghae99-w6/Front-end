@@ -14,21 +14,23 @@ export const PostBox = styled.div`
 `;
 export const PostBoxText = styled.div`
   box-sizing: border-box;
-  padding: 10px;
+  padding: 8px;
   width: 100%;
-  height: 54%;
+  height: 58%;
   font-family: NotoSansKR-Light;
   border-radius: 10px;
-  padding: 10px;
   text-overflow: ellipsis;
   background-color: #000000;
   opacity: 0.9;
+  word-break: break-all;
+  overflow: visible;
+  text-overflow: clip;
   color: #cecece;
 `;
 export const PostBoxButtonGroup = styled.div`
   box-sizing: border-box;
   width: 90%;
-  height: 35%;
+  height: 31%;
   display: flex;
   justify-content: space-between;
   align-items: center;

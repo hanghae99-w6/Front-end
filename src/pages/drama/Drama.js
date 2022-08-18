@@ -33,7 +33,11 @@ const Drama = () => {
 
   const onPostDrama = () => {
     try {
-      if (window.sessionStorage.getItem('authorization') === null) {
+      if (
+        window.localStorage.getItem('authorization') === '' ||
+        window.localStorage.getItem('authorization') === undefined ||
+        window.localStorage.getItem('authorization') === null
+      ) {
         alert('로그인 후에 이용 바랍니다.');
         navigate('/signin');
       } else {

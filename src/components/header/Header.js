@@ -36,8 +36,14 @@ const Header = ({ category }) => {
 
   useEffect(() => {
     try {
-      if (window.sessionStorage.getItem('authorization') !== null) {
-        const nickname = jwt_decode(window.sessionStorage.getItem('authorization')).sub;
+      if (
+        window.localStorage.getItem('authorization') !== '' ||
+        window.localStorage.getItem('authorization') !== undefined ||
+        window.localStorage.getItem('authorization') !== null
+      ) {
+        const nickname = jwt_decode(
+          window.localStorage.getItem('authorization')
+        ).sub;
         dispatch(headerAction({ nickname, loginStatus: true }));
         setState(true);
       }
@@ -67,8 +73,8 @@ const Header = ({ category }) => {
   }, []);
 
   const signOut = () => {
-    window.sessionStorage.setItem('authorization', '');
-    window.sessionStorage.setItem('refresh-token', '');
+    window.localStorage.setItem('authorization', '');
+    window.localStorage.setItem('refresh-token', '');
     setState(false);
     dispatch(headerAction({ nickname: '', loginStatus: false }));
     alert('로그아웃 되었습니다.');

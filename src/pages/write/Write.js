@@ -2,7 +2,7 @@
 import { Fragment, useEffect, useState, useRef, useCallback } from 'react';
 
 // Redux import
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addPostThunk } from '../../redux/modules/post';
 
 // Package import

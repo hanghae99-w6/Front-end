@@ -3,7 +3,10 @@ import { Fragment, useEffect } from 'react';
 
 // Redux import
 import { useDispatch, useSelector } from 'react-redux';
-import { getEntertainPostThunk, userLikePostThunk } from '../../redux/modules/post';
+import {
+  getEntertainPostThunk,
+  userLikePostThunk,
+} from '../../redux/modules/post';
 
 // Package import
 import { useNavigate } from 'react-router-dom';
@@ -33,7 +36,11 @@ const Entertain = () => {
 
   const onPostEntertain = () => {
     try {
-      if (window.sessionStorage.getItem('authorization') === null) {
+      if (
+        window.localStorage.getItem('authorization') === '' ||
+        window.localStorage.getItem('authorization') === undefined ||
+        window.localStorage.getItem('authorization') === null
+      ) {
         alert('로그인 후에 이용 바랍니다.');
         navigate('/signin');
       } else {
