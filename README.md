@@ -29,43 +29,67 @@
 
 <br>
 
-## 와이어 프레임<br>
-[와이어 프레임](https://www.figma.com/file/dapEFyHroe0F7veKdijnio/Mini-Project?node-id=0%3A1)
-
-<br>
-
-## API 명세서<br>
-<details>
-<summary>여기를 눌러주세요</summary>
-<div markdown="1">       
-
-😎숨겨진 내용😎
-
-</div>
-</details>
-
-<br>
-
-## ✨ 기능<br>
-
-#### 소셜 로그인
-- 카카오톡 로그인으로 간단하게 회원가입할 수 있습니다.
-
-#### 포스팅하기
-
-
-<br>
-
-## 🔥 트러블슈팅<br>
-- 
-- 
-- 
-- 
-
-<br>
-
-## 프론트엔드 팀원 소개<br>
+## 😎 프론트엔드 팀원 소개<br>
 이름 | 깃허브 주소 |
 ---|---|
 성필상|https://github.com/lucy-pill
 신범수|https://github.com/BUMSUSHN
+
+<br>
+
+## 📚 와이어 프레임 / API 명세서<br>
+<details>
+<summary>여기를 눌러주세요</summary>
+<div markdown="1">
+
+<br>
+  
+[figma로 열기](https://www.figma.com/file/dapEFyHroe0F7veKdijnio/Mini-Project?node-id=0%3A1)
+<br>
+
+[노션으로 열기](https://www.notion.so/5-abb0b2421aa6449abd1b7a4251a9e819)
+
+</div>
+</details>
+<br>
+
+## ✨ 핵심 기능<br>
+
+### # 공통 기능
+- Input 상태 관리하기 : useRef를 이용하여 input창을 초기화할 수 있습니다. 
+<br>
+
+#### 1. 로그인
+- 소셜 로그인 : 카카오톡으로 간단하게 로그인할 수 있습니다.
+<br>
+
+#### 2. 회원가입
+- 이메일 주소 & 닉네임 : 중복 체크 버튼을 없애고 debounce를 이용하여 중복 체크를 진행하였습니다.
+- 비밀번호 : on/off 버튼을 이용하여 비밀번호 입력 시 노출되지 않게 설정할 수 있습니다.
+<br>
+
+#### 3. 영화 / 드라마 / 예능 페이지
+- 카테고리별로 분할하여 각각의 페이지에서 포스팅할 수 있습니다.
+- Grid를 이용하여 페이지에 생동감을 주었습니다.
+- 로그아웃/비회원 상태에서 버튼을 클릭 시 '로그인 후에 이용 바랍니다' alert을 띄우고 로그인 페이지로 이동합니다.
+- 좋아요 기능 : 포스트가 좋아요를 많이 받은 순서대로 정렬됩니다.
+<br>
+
+#### 4. 상세페이지
+- 댓글 CRUD 기능 구현
+- 특정 포스트에 상세보기 클릭 시 댓글 리스트를 확인할 수 있습니다.
+
+<br>
+
+## 🔥 트러블슈팅<br>
+
+<br>
+
+## 📖 새로 적용해본 기술<br>
+
+<br>
+
+## 개선해야할 사항<br>
+
+<br>
+
