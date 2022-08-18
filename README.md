@@ -1,7 +1,7 @@
 ![logo](https://user-images.githubusercontent.com/109033607/185214064-b9bb56c9-b2e1-4532-b0ec-3fd59c722075.png)
 ## 🙌 프로젝트 소개
 영화, 드라마, 예능을 리뷰하는 사이트입니다.<br>
-컨텐츠를 보고 별점과 코멘트는 남겨주세요.
+컨텐츠를 보고 별점과 코멘트를 남겨주세요.
 
 <br>
 
@@ -35,6 +35,14 @@
 <br>
 
 ## API 명세서<br>
+<details>
+<summary>여기를 눌러주세요</summary>
+<div markdown="1">       
+
+😎숨겨진 내용😎
+
+</div>
+</details>
 
 <br>
 
