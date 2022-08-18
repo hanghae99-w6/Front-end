@@ -74,7 +74,6 @@ const Write = () => {
   const onSubmitPost = (e) => {
     e.preventDefault();
 
-    console.log(newPost);
     if (rating === '') alert('별점을 남겨주세요!');
     else {
       dispatch(addPostThunk(newPost));

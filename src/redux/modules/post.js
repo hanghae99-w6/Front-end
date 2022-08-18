@@ -153,19 +153,16 @@ export const postSlice = createSlice({
     builder.addCase(addPostThunk.fulfilled, (state, action) => {
       switch(action.payload.category) {
         case 'movie': {
-          state.movie_post = action.payload;
-          break;
+          return state.movie_post = action.payload;
         }
         case 'drama': {
-          state.drama_post = action.payload;
-          break;
+          return state.drama_post = action.payload;
         }
         case 'entertain': {
-          state.entertain_post = action.payload;
-          break;
+          return state.entertain_post = action.payload;
         }
         default:
-          break;
+          return state;
       }
       state.movie_post = action.payload;
     });
