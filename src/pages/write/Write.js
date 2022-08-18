@@ -76,8 +76,9 @@ const Write = () => {
 
     if (rating === '') alert('별점을 남겨주세요!');
     else {
-      dispatch(addPostThunk(newPost));
-      navigate(`/${category}`);
+      dispatch(addPostThunk(newPost)).then((res) => {
+        navigate(`/${category}`);
+      });
     }
   };
 

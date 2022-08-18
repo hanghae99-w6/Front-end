@@ -121,14 +121,14 @@ export const deletePostThunk = createAsyncThunk(
       authorization: `Bearer ${window.localStorage.getItem('authorization')}`,
       'refresh-token': `${window.localStorage.getItem('refresh-token')}`,
     };
-
+    console.log(payload);
     const resData = await api_auth
       .delete(`/auth/post/${payload}`, { headers })
       .then((res) => res.data)
       .catch((err) => {
-        alert('본인 포스팅만 삭제가 가능합니다.');
         console.err(err);
       });
+    console.log(resData);
     return thunkAPI.fulfillWithValue(resData);
   }
 );
@@ -151,20 +151,14 @@ export const postSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(addPostThunk.fulfilled, (state, action) => {
-      switch(action.payload.category) {
-        case 'movie': {
-          return state.movie_post = action.payload;
-        }
-        case 'drama': {
-          return state.drama_post = action.payload;
-        }
-        case 'entertain': {
-          return state.entertain_post = action.payload;
-        }
-        default:
-          return state;
+      if (action.payload.category === 'movie') {
+        state.movie_post = [...state.movie_post, action.payload];
+        console.log(state.movie_post);
+      } else if (action.payload.category === 'drama') {
+        state.drama_post = [...state.drama_post, action.payload];
+      } else {
+        state.entertain_post = [...state.entertain_post, action.payload];
       }
-      state.movie_post = action.payload;
     });
     builder.addCase(getMoviePostThunk.fulfilled, (state, action) => {
       state.movie_is_loaded = true;

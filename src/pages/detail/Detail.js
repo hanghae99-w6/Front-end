@@ -51,6 +51,7 @@ const Detail = () => {
   }, []);
 
   const onDeletePost = () => {
+    console.log(id);
     dispatch(deletePostThunk(id)).then((res) => {
       if (res.payload.data === 'delete success') {
         alert('삭제 완료되었습니다.');

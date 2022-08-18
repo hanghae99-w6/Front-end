@@ -50,6 +50,7 @@ export const deleteCommentThunk = createAsyncThunk(
         alert('본인 댓글만 삭제가 가능합니다.');
         console.err(err);
       });
+      
     return thunkAPI.fulfillWithValue({ resData, id: payload });
   }
 );
