@@ -150,6 +150,25 @@ export const postSlice = createSlice({
   initialState: initialState,
   reducers: {},
   extraReducers: (builder) => {
+    builder.addCase(addPostThunk.fulfilled, (state, action) => {
+      switch(action.payload.category) {
+        case 'movie': {
+          state.movie_post = action.payload;
+          break;
+        }
+        case 'drama': {
+          state.drama_post = action.payload;
+          break;
+        }
+        case 'entertain': {
+          state.entertain_post = action.payload;
+          break;
+        }
+        default:
+          break;
+      }
+      state.movie_post = action.payload;
+    });
     builder.addCase(getMoviePostThunk.fulfilled, (state, action) => {
       state.movie_is_loaded = true;
       state.movie_post = action.payload;
