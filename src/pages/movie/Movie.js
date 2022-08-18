@@ -22,13 +22,19 @@ import { MovieBox, ButtonBox } from './Movie.styled';
 const Movie = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  
   const is_loaded = useSelector((state) => state.post.movie_is_loaded);
   const postData = useSelector((state) => state.post.movie_post);
 
   useEffect(() => {
     dispatch(getMoviePostThunk());
-    dispatch(userLikePostThunk());
+    if (
+      window.localStorage.getItem('authorization') !== '' ||
+      window.localStorage.getItem('authorization') !== undefined ||
+      window.localStorage.getItem('authorization') !== null
+    ) {
+      dispatch(userLikePostThunk());
+    }
   }, []);
 
   const onPostMovie = () => {

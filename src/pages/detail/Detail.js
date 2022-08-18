@@ -51,6 +51,7 @@ const Detail = () => {
   }, []);
 
   const onDeletePost = () => {
+    console.log(id);
     dispatch(deletePostThunk(id)).then((res) => {
       if (res.payload.data === 'delete success') {
         alert('삭제 완료되었습니다.');
@@ -69,6 +70,7 @@ const Detail = () => {
         window.localStorage.getItem('authorization') === null
       ) {
         alert('로그인 후 사용해주세요.');
+        navigate('/signin');
       } else {
         dispatch(addCommentThunk({ postId: id, comment }));
         setComment('');
@@ -76,6 +78,7 @@ const Detail = () => {
     } catch (err) {
       console.error(err);
       alert('로그인 후 사용해주세요.');
+      navigate('/signin');
     }
   };
 
@@ -93,7 +96,7 @@ const Detail = () => {
           <Star rating={detail_is_loaded ? parseInt(post.star) : 0}></Star>
         </DetailStar>
         <DetailContent>
-          <span>{detail_is_loaded ? post.content : ''}</span>
+          <span style={{textAlign: 'center'}}>{detail_is_loaded ? post.content : ''}</span>
         </DetailContent>
         <DetailImage
           imgUrl={detail_is_loaded ? post.imgUrl : logoHeader}

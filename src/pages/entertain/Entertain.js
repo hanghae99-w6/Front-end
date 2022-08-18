@@ -31,7 +31,13 @@ const Entertain = () => {
 
   useEffect(() => {
     dispatch(getEntertainPostThunk());
-    dispatch(userLikePostThunk());
+    if (
+      window.localStorage.getItem('authorization') !== '' ||
+      window.localStorage.getItem('authorization') !== undefined ||
+      window.localStorage.getItem('authorization') !== null
+    ) {
+      dispatch(userLikePostThunk());
+    }
   }, []);
 
   const onPostEntertain = () => {

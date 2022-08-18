@@ -83,10 +83,10 @@ export const DetailContent = styled.div`
   left: 550px;
   display: flex;
   justify-content: center;
-  padding: 10px;
+  padding: 15px;
   box-sizing: border-box;
   align-items: center;
-  line-height: 30px;
+  line-height: 20px;
   font-family: NotoSansKR-Regular;
   word-break: break-all;
 
@@ -105,6 +105,7 @@ export const DetailContent = styled.div`
   }
   &::-webkit-scrollbar-corner {
     background-color: transparent;
+    border-radius: 20px;
   }
   &::-webkit-scrollbar-button {
     background-color: transparent;
